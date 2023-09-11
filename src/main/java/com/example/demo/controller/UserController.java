@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 //import org.springframework.web.bind.annotation.ModelAttribute; -> RequestParam의 묶음형태..클래스로 한번에 매핑
@@ -38,17 +39,21 @@ public class UserController {
 	@PostMapping("/login")
 	public String login(String userId,
 						String userPw,
-						HttpSession session) {
+						HttpSession session,
+						Model model) {
 		String dbPw = userService.login(userId);
 		
 		if (dbPw.equals(userPw)) {
 			//로그인 성공
 			session.setAttribute("loginId", userId);
-			return "home";
+			model.addAttribute("msg", "로그인이 성공하였습니다.");
+			model.addAttribute("url", "/");
+			return "alert";
 		} else {
 			//로그인 실패
-			
-			return "login";
+			model.addAttribute("msg", "아이디나 비밀번호가 올바르지 않습니다.");
+			model.addAttribute("url", "login");
+			return "alert";
 		}
 	}
 }

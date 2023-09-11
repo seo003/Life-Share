@@ -42,16 +42,19 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <a class="nav-link" href="index.html">
+                        	<a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
+                                프로필
+                            </a>
+                            <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>
                                 즐겨찾기
                             </a>
-                            <a class="nav-link" href="index.html">
+                            <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-comments"></i></div>
                                 채팅
                             </a>
-                            
-                            
+							
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
@@ -60,9 +63,25 @@
                                     </a>
                                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Login</a>
+                                        	<%
+                                        	String loginId = (String) session.getAttribute("loginId");
+                   							
+                    						//로그인 X
+                    						if (loginId == null) {
+                                        	%>
+                                        	<a class="nav-link" href="login.html">Login</a>
                                             <a class="nav-link" href="register.html">Register</a>
                                             <a class="nav-link" href="password.html">Forgot Password</a>
+                                        	<%
+                    						}
+                    						else { //로그인 O
+                                        	%>
+                                        	<a class="nav-link" href="">Profile</a>
+                                            <a class="nav-link" href="register.html">LogOut</a>
+                                        	<%
+                    						}
+                                        	%>
+                                            
                                         </nav>
                                     </div>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">

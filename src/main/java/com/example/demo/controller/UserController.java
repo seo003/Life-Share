@@ -36,8 +36,8 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public String login(@RequestParam("userID") String userId,
-						@RequestParam("userPw") String userPw,
+	public String login(String userId,
+						String userPw,
 						HttpSession session) {
 		String dbPw = userService.login(userId);
 		
@@ -47,6 +47,7 @@ public class UserController {
 			return "home";
 		} else {
 			//로그인 실패
+			
 			return "login";
 		}
 	}

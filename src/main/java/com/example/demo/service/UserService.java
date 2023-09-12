@@ -16,6 +16,5 @@ public class UserService{
 	
 	public String login(String userId) {
 		return userMapper.login(userId);
-	}
-	
+	}	
 }

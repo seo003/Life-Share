@@ -45,7 +45,7 @@
                     	else { //로그인 O
                         %>
                         <li><a class="dropdown-item" href="#">프로필</a></li>
-                        <li><a class="dropdown-item" href="#">로그아웃</a></li>
+                        <li><a class="dropdown-item" href="/logout">로그아웃</a></li>
                         <%
                     	} 
                         %>

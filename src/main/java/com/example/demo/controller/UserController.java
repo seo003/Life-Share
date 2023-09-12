@@ -40,20 +40,26 @@ public class UserController {
 	public String login(String userId,
 						String userPw,
 						HttpSession session,
-						Model model) {
+						Model model ) { //jsp로 객체 보내는거 model
 		String dbPw = userService.login(userId);
+		String login = "loginY";
 		
 		if (dbPw.equals(userPw)) {
 			//로그인 성공
 			session.setAttribute("loginId", userId);
-			model.addAttribute("msg", "로그인이 성공하였습니다.");
-			model.addAttribute("url", "/");
-			return "alert";
 		} else {
 			//로그인 실패
-			model.addAttribute("msg", "아이디나 비밀번호가 올바르지 않습니다.");
-			model.addAttribute("url", "login");
-			return "alert";
+			login = "loginN";
 		}
+		model.addAttribute("msg", login);
+		return "alert";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session,
+						 Model model) {
+		session.setAttribute("loginId", null);
+		model.addAttribute("msg", "logout");
+		return "alert";
 	}
 }

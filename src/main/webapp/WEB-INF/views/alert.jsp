@@ -9,8 +9,25 @@
 <body>
 <script>
     var msg = "${msg}";
-    var url = "${url}";
-    alert(msg);
+    var alertMsg = "";
+    var url = "";
+    
+    switch(msg) {
+    case "loginY":
+    	alertMsg = "로그인이 성공하였습니다.";
+	    url = "/";
+	    break;
+    case "loginN":
+    	alertMsg = "아이디나 비밀번호가 올바르지 않습니다.";
+    	url = "/login"
+    	break;
+    case "logout":
+    	alertMsg = "로그아웃 되었습니다.";
+    	url = "/";
+    	break;
+    }
+    
+    alert(alertMsg);
     location.href = url;
 </script>
 </body>

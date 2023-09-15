@@ -36,8 +36,9 @@ public class UserController {
 		}
 	}
 	
-	@PostMapping("/login")
+	@PostMapping("/login") //login에서 post방식으로 양식 제출할 때
 	public String login(String userId,
+						//@RequestParam("userId") String userId,
 						String userPw,
 						HttpSession session,
 						Model model ) { //jsp로 객체 보내는거 model
@@ -61,5 +62,20 @@ public class UserController {
 		session.setAttribute("loginId", null);
 		model.addAttribute("msg", "logout");
 		return "alert";
+	}
+	
+	@GetMapping("/profile")
+	public String profile(HttpSession session,
+						  Model model) {
+		String loginId = (String) session.getAttribute("loginId");
+			
+		if (loginId == null) { //로그인 X
+			model.addAttribute("msg", "needLogin");
+			return "alert";
+		} else { //로그인 O
+			return "/profile";
+		}
+		
+		
 	}
 }

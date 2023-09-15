@@ -24,11 +24,11 @@
                                     <div class="card-body">
                                         <form action="/login" method="post">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="text" placeholder="name@example.com" name="userId"/>
+                                                <input class="form-control" id="inputEmail" name="userId" type="text" placeholder="name@example.com"/>
                                                 <label for="inputEmail">ID</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputPassword" type="password" placeholder="Password" name="userPw"/>
+                                                <input class="form-control" id="inputPassword" name="userPw" type="password" placeholder="Password"/>
                                                 <label for="inputPassword">Password</label>
                                             </div>
                                             <div class="form-check mb-3">
@@ -37,7 +37,7 @@
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="password.html">Forgot Password?</a>
-                                                <button type="submit" style="background-color:white; border-style:none"><a class="btn btn-primary" href="/">Login</a></button>
+                                                <button type="submit" style="background-color:white; border-style:none"><a class="btn btn-primary">Login</a></button>
                                             </div>
                                         </form>
                                     </div>

@@ -25,6 +25,10 @@
     	alertMsg = "로그아웃 되었습니다.";
     	url = "/";
     	break;
+    case "needLogin":
+    	alertMsg = "로그인이 필요합니다.";
+    	url = "/login";
+    	break;
     }
     
     alert(alertMsg);

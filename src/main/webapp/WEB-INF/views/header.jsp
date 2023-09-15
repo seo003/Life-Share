@@ -17,7 +17,7 @@
 	<body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="/home">Life Share</a>
+            <a class="navbar-brand ps-3" href="/">Life Share</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -44,7 +44,7 @@
                     	}
                     	else { //로그인 O
                         %>
-                        <li><a class="dropdown-item" href="#">프로필</a></li>
+                        <li><a class="dropdown-item" href="/profile">프로필</a></li>
                         <li><a class="dropdown-item" href="/logout">로그아웃</a></li>
                         <%
                     	} 
@@ -58,12 +58,16 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                         	<a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
-                                프로필
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-pen-to-square"></i></div>
+                                게시물
                             </a>
                             <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>
                                 즐겨찾기
+                            </a>
+                            <a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user-group"></i></div>
+                                친구
                             </a>
                             <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-comments"></i></div>
@@ -104,29 +108,5 @@
                     </div>
                 </nav>
             </div>
-            <div id="layoutSidenav_content">
-                
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; SeoYoung Kim</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
-    </body>
-</body>
+            
 </html>

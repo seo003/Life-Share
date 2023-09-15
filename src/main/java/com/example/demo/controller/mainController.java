@@ -13,5 +13,4 @@ public class MainController {
     public String home() {
         return "home"; //뷰 반환(home)
     }
-	
 }

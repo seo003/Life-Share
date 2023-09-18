@@ -57,9 +57,9 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                        	<a class="nav-link" href="#">
+                        	<a class="nav-link" href="/myBbs">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-pen-to-square"></i></div>
-                                게시물
+                                내 게시물
                             </a>
                             <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tags"></i></div>

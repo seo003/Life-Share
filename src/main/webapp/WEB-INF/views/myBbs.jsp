@@ -13,13 +13,22 @@
 		<main>
 			<div class="content-layout">
 				<div class="favorites-boards-list">
-
+					<div class="favorites-board-new">
+						<div class="create-new">
+							<div class="icon-plus">+</div>
+							<div class="create-text">새 게시물 작성</div>
+						</div>
+						<div class="title">
+							<div class="favorites-board-title">New Design Board</div>
+							<div class="favorites-board-heart">♥ 0</div>
+						</div>
+					</div>
 					<div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
 							<img class="favorites-board-image" src="qk.jpg">
 						</div>
 						<div class="title">
-							<div class="favorites-board-title">예시</div>
+							<div class="favorites-board-title">Modern Living Room 1</div>
 							<div class="favorites-board-heart">♥ 5</div>
 						</div>
 					</div>
@@ -58,10 +67,10 @@
 							<div class="favorites-board-title">1- Store Visit 6/3/16</div>
 							<div class="favorites-board-heart">♥ 15</div>
 						</div>
+
 					</div>
-					<a href="#" class="float"> <i class="fa-solid fa-pen"></i>
-					</a>
 				</div>
+			</div>
 		</main>
 		<%@include file="footer.jsp"%>
 </html>

@@ -29,6 +29,18 @@
     	alertMsg = "로그인이 필요합니다.";
     	url = "/login";
     	break;
+    case "pUpdateY":
+    	alertMsg = "프로필 수정이 완료되었습니다.";
+    	url="/profile";
+    	break;
+    case "pUpdateN":
+    	alertMsg="프로필 수정이 실패하였습니다.";
+    	url="/profileUpdate";
+    	break;
+    case "pwMatchFail":
+    	alertMsg="비밀번호가 일치하지 않습니다.";
+    	url="/profileUpdate";
+    	break;
     }
     
     alert(alertMsg);

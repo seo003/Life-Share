@@ -16,6 +16,7 @@
 			margin-left: 75px;
 			height: 300px;
 			float: left;
+			
 
 			.favorites-board-thumbnails {
 				height: 400px;
@@ -25,6 +26,7 @@
 				background: white;
 				margin-bottom: 18px;
 				border: 1px solid silver;
+				border-radius:2%;
 
 				/*img {
           width: 100%;
@@ -69,6 +71,7 @@
 				.favorites-board-image {
 					/*이미지크기*/
 					height: 400px;
+					border-radius:2%;
 				}
 			}
 
@@ -82,6 +85,7 @@
 				Font-weight: bold;
 				float: left;
 				width: 350px;
+				
 			}
 
 			.favorites-board-heart {
@@ -89,6 +93,11 @@
 				color: rgba(5, 159, 255, 1);
 				float: right;
 				text-align: right;
+			}
+			.favorites-board-Date {
+				
+				float: left;
+				width: 350px;
 			}
 		}
 
@@ -109,6 +118,7 @@
 				background: #E9EAEC;
 				margin-bottom: 18px;
 				border: 1px dashed silver;
+				border-radius:2%;
 
 				.icon-plus {
 					width: 35px;
@@ -145,6 +155,7 @@
 
 	.title {
 		width: 400px;
+		clear:both;
 	}
 
 	.float {
@@ -169,5 +180,12 @@
 	.float:hover {
 		color:rgba(184, 228, 255, 1);
 		background-color: rgba(5, 159, 255, 1);
+	}
+	.imgRound {
+		border-radius: 50%;
+		width:50px;
+		height:50px;
+		margin-right:10px;
+		margin-bottom:10px;
 	}
 }

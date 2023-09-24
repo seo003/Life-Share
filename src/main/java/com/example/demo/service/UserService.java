@@ -34,4 +34,8 @@ public class UserService{
 			return result;
 		}
 	}
+	
+	public int userDelete(String userId) {
+		return userMapper.userDelete(userId);
+	}
 }

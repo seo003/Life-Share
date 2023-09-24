@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute; //-> RequestParam의 묶음형태..클래스로 한번에 매핑
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -44,6 +45,10 @@ public class UserController {
 			String userPw, HttpSession session, Model model) { // jsp로 객체 보내는거 model
 		String dbPw = userService.login(userId);
 		String login = "loginY";
+		if (dbPw == null) {
+			login = "loginDbN";
+			return "alert";
+		}
 
 		if (dbPw.equals(userPw)) {
 			// 로그인 성공
@@ -83,12 +88,11 @@ public class UserController {
 	}
 
 	@PostMapping("/profileUpdate")
-	public String profileUpdate(String userName, String userId, String userPw, String pwcheck,String userPhone, 
-								String userEmail, String userGender, String userBirth,
-			@ModelAttribute UserDTO userDTO, Model model) {
+	public String profileUpdate(String userName, String userId, String userPw, String pwcheck, String userPhone,
+			String userEmail, String userGender, String userBirth, @ModelAttribute UserDTO userDTO, Model model) {
 		if (userPw.equals(pwcheck)) {
 			UserDTO newInfo = new UserDTO(userName, userId, userPw, userPhone, userEmail, userGender, userBirth);
-			//System.out.println(newInfo.toString());
+			// System.out.println(newInfo.toString());
 			Integer result = userService.profileUpdate(newInfo);
 			if (result > 0) {
 				model.addAttribute("msg", "pUpdateY");
@@ -97,10 +101,24 @@ public class UserController {
 				model.addAttribute("msg", "pUpdateN");
 				return "alert";
 			}
-		} else { //비밀번호 다름
+		} else { // 비밀번호 다름
 			model.addAttribute("msg", "pwMatchFail");
 			return "alert";
 		}
-		
+	}
+	//controller
+	@GetMapping("/userDelete/{userId}")
+	public String userDelete(@PathVariable String userId, Model model, HttpSession session) {
+							//@PathVariable("userId") String userId
+		int result = userService.userDelete(userId);
+
+		if (result > 0) {
+			model.addAttribute("msg", "deleteY");
+			session.setAttribute("loginId", null);
+			return "alert";
+		} else {
+			model.addAttribute("msg", "deleteN");
+			return "alert";
+		}
 	}
 }

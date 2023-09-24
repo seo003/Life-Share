@@ -61,10 +61,20 @@
 								</tr>
 							</tbody>
 						</table>
+						<button type="button" onclick="userDelete('<%=info.getUserId()%>');">
+							<a class="btn btn-primary">탈퇴</a>
+						</button>
 					</div>
 				</div>
 			</div>
 			<!-- End -->
+			<script>
+				function userDelete(userId) {
+					if (window.confirm("정말로 탈퇴하시겠습니까?")) {
+						location.href = "/userDelete/" + userId;
+					}
+				}
+			</script>
 		</main>
 		<%@include file="footer.jsp"%>
 </html>

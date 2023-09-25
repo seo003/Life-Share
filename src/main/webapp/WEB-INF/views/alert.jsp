@@ -62,7 +62,7 @@
 			url = "bbsWrite";
 			break;
 		case "bbsWriteEmpty":
-			alertMsg = "빈 칸이 있습니다.";
+			alertMsg = "내용을 작성해주세요.";
 			url = "bbsWrite";
 			break;
 		}

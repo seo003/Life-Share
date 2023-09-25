@@ -53,6 +53,18 @@
 			alertMsg = "회원 탈퇴가 실패하였습니다.";
 			url = "/profile";
 			break;
+		case "bbsWriteY":
+			alertMsg = "게시물 작성이 완료되었습니다.";
+			url = "myBbs";
+			break;
+		case "bbsWriteN":
+			alertMsg = "게시물 작성이 실패하였습니다.";
+			url = "bbsWrite";
+			break;
+		case "bbsWriteEmpty":
+			alertMsg = "빈 칸이 있습니다.";
+			url = "bbsWrite";
+			break;
 		}
 
 		alert(alertMsg);

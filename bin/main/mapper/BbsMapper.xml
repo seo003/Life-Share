@@ -5,4 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- namespace에 dao(mapper.java) -->
 <mapper namespace="com.example.demo.mapper.BbsMapper">
 
+	<insert id="bbsWrite" parameterType="com.example.demo.dto.BbsDTO">
+		INSERT INTO bbs(bbsId, userId, bbsContent) values (#{bbsId}, #{userId}, #{bbsContent})
+	</insert>
+
 </mapper>

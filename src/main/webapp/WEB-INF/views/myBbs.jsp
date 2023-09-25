@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="css/boardStyles.css" rel="stylesheet" />
+<link href="css/myBoardStyles.css" rel="stylesheet" />
 </head>
 <div id="layoutSidenav">
 	<div id="layoutSidenav_content">

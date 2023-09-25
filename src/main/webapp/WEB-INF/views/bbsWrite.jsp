@@ -13,6 +13,7 @@
 		<main>
 			<div class="content-layout">
 				<div class="favorites-boards-list">
+				
 					<form method="post" action="/bbsWrite">
 						<div class="favorites-board-item">
 							<div class="favorites-board-thumbnails">
@@ -38,6 +39,7 @@
 							</div>
 						</div>
 					</form>
+					
 				</div>
 			</div>
 		</main>

@@ -8,5 +8,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="bbsWrite" parameterType="com.example.demo.dto.BbsDTO">
 		INSERT INTO bbs(bbsId, userId, bbsContent) values (#{bbsId}, #{userId}, #{bbsContent})
 	</insert>
-
+	
+	<!-- resultType="List"-->
+	<select id="getMyBbsAll" parameterType="com.example.demo.dto.BbsDTO" resultType="com.example.demo.dto.BbsDTO">
+		SELECT * FROM bbs WHERE userId = #{userId}
+	</select>
 </mapper>

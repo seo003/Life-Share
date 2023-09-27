@@ -106,7 +106,7 @@ public class UserController {
 			return "alert";
 		}
 	}
-	//controller
+	
 	@GetMapping("/userDelete/{userId}")
 	public String userDelete(@PathVariable String userId, Model model, HttpSession session) {
 							//@PathVariable("userId") String userId

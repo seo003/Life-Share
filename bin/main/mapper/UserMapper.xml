@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE userId = #{userId};
 	</update>
 	
-	<delete id="userDelete" parameterType="com.example.demo.dto.UserDTO">
+	<delete id="userDelete" parameterType="com.example.demo.dto.UserDTO" >
 		DELETE FROM users WHERE userId = #{userId};
 	</delete>
 </mapper>

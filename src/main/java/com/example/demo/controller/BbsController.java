@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +32,11 @@ public class BbsController {
 			model.addAttribute("msg", "needLogin");
 			return "alert";
 		}
+		
+		ArrayList<BbsDTO> bbsDTO = new ArrayList<>();
+		bbsDTO = bbsService.getMyBbsAll(loginId);
+		session.setAttribute("bbsList", bbsDTO);
+		
 		return "myBbs";
 	}
 
@@ -59,4 +67,7 @@ public class BbsController {
 		}
 			return "alert";
 	}
+	
+	
+	
 }

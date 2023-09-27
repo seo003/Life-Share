@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.example.demo.dto.BbsDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
@@ -11,6 +13,9 @@
 <div id="layoutSidenav">
 	<div id="layoutSidenav_content">
 		<main>
+			<%
+			ArrayList<BbsDTO> bbsList = (ArrayList) session.getAttribute("bbsList");
+			%>
 			<div class="content-layout">
 				<div class="favorites-boards-list">
 					<div class="favorites-board-new">
@@ -29,8 +34,11 @@
 
 						<div></div>
 					</div>
+
+
 					<div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
+
 							<img class="favorites-board-image" src="qk.jpg">
 						</div>
 						<div class="title">
@@ -39,43 +47,27 @@
 							<div class="favorites-board-title">쿼카귀여워</div>
 						</div>
 					</div>
-					<div class="favorites-board-item">
-						<div class="favorites-board-thumbnails">
-							<img class="favorites-board-image" src="#">
-						</div>
-						<div class="title">
-							<div class="favorites-board-title">1- Store Visit 6/3/16</div>
-							<div class="favorites-board-heart">♥ 15</div>
-						</div>
-					</div>
-					<div class="favorites-board-item">
-						<div class="favorites-board-thumbnails">
-							<img class="favorites-board-image" src="#">
-						</div>
-						<div class="title">
-							<div class="favorites-board-title">1- Store Visit 6/3/16</div>
-							<div class="favorites-board-heart">♥ 15</div>
-						</div>
-					</div>
-					<div class="favorites-board-item">
-						<div class="favorites-board-thumbnails">
-							<img class="favorites-board-image" src="#">
-						</div>
-						<div class="title">
-							<div class="favorites-board-title">1- Store Visit 6/3/16</div>
-							<div class="favorites-board-heart">♥ 15</div>
-						</div>
-					</div>
-					<div class="favorites-board-item">
-						<div class="favorites-board-thumbnails">
-							<img class="favorites-board-image" src="#">
-						</div>
-						<div class="title">
-							<div class="favorites-board-title">1- Store Visit 6/3/16</div>
-							<div class="favorites-board-heart">♥ 15</div>
-						</div>
 
+					<%
+					BbsDTO bbsInfo = new BbsDTO();
+					for (int i = 0; i < bbsList.size(); i++) {
+						bbsInfo = bbsList.get(i);
+					%>
+					<div class="favorites-board-item">
+						<div class="favorites-board-thumbnails">
+							<img class="favorites-board-image" src="#">
+						</div>
+						<div class="title">
+							<div class="favorites-board-Date"><%=bbsInfo.getBbsDate()%></div>
+							<div class="favorites-board-heart">♥ 15</div>
+							<div class="favorites-board-title"><%=bbsInfo.getBbsContent()%>
+							</div>
+						</div>
 					</div>
+					<%
+					}
+					%>
+
 				</div>
 			</div>
 		</main>

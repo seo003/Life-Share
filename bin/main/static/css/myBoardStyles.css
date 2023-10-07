@@ -76,12 +76,18 @@
 					height: 400px;
 					border-radius: 2%;
 				}
+				.favorites-board-image:hover {
+					
+					border : 2px solid white;
+				}
 			}
 
 			.favorites-board-thumbnails:hover {
 				.design-board {
 					display: block;
 				}
+				
+				
 			}
 
 			.favorites-board-title {
@@ -155,9 +161,7 @@
 				text-align: right;
 			}
 
-			.favorite-board-create {}
-		}
-
+			
 	}
 
 	.title {
@@ -197,5 +201,8 @@
 		height: 50px;
 		margin-right: 10px;
 		margin-bottom: 10px;
+	}
+	.one:hover {
+		color:rgba(5, 159, 255, 1);
 	}
 }

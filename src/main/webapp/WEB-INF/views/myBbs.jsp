@@ -32,37 +32,27 @@
 						<%-- 댓글
 						<%@include file="comment.jsp"%> --%>
 
-						<div></div>
 					</div>
 
 
-					<div class="favorites-board-item">
-						<div class="favorites-board-thumbnails">
-
-							<img class="favorites-board-image" src="qk.jpg">
-						</div>
-						<div class="title">
-							<div class="favorites-board-Date">2003-02-12 10시 23분</div>
-							<div class="favorites-board-heart">♥ 5</div>
-							<div class="favorites-board-title">쿼카귀여워</div>
-						</div>
-					</div>
 
 					<%
 					BbsDTO bbsInfo = new BbsDTO();
-					for (int i = 0; i < bbsList.size(); i++) {
+					for (int i = bbsList.size()-1; i >= 0; i--) {
 						bbsInfo = bbsList.get(i);
 					%>
 					<div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
-							<img class="favorites-board-image" src="#">
+							<a class="one" href="/myBbsOne/<%=bbsInfo.getBbsId()%>"><img class="favorites-board-image" src="#"> </a>
 						</div>
+						<a class="one" href="/myBbsOne/<%=bbsInfo.getBbsId()%>">
 						<div class="title">
 							<div class="favorites-board-Date"><%=bbsInfo.getBbsDate()%></div>
 							<div class="favorites-board-heart">♥ 15</div>
 							<div class="favorites-board-title"><%=bbsInfo.getBbsContent()%>
 							</div>
 						</div>
+						</a>
 					</div>
 					<%
 					}

@@ -16,7 +16,7 @@
 			margin-left: 75px;
 			height: 300px;
 			float: left;
-			display:flex;
+			display: flex;
 
 			.favorites-board-thumbnails {
 				height: 400px;
@@ -84,7 +84,7 @@
 				float: left;
 				width: 350px;
 				margin-left: 75px;
-				margin-top:75px;
+				margin-top: 75px;
 			}
 
 			.favorites-board-heart {
@@ -133,6 +133,8 @@
 				Font-weight: bold;
 				float: left;
 				width: 90%;
+				margin-left: 10px; /* 마진 값을 조절하여 원하는 간격을 설정하세요 */
+    margin-top: 75px;
 			}
 
 			.favorites-board-heart {
@@ -146,9 +148,23 @@
 
 	}
 
-	.title {
-		
+	.content {
+		width: 400px;
 	}
+
+	.date {
+		width: 350px;
+		float: left;
+	}
+
+	.hear {
+		float: left;
+	}
+
+	.td {
+		height:100px;	
+	}
+
 
 	.float {
 		position: fixed;
@@ -161,27 +177,36 @@
 		border-radius: 50px;
 		text-align: center;
 		box-shadow: 2px 2px 3px #999;
-		
+
 	}
-	
+
 
 	.fa-pen {
 		margin-top: 25px;
-		font-size:20px;
+		font-size: 20px;
 	}
+
 	.float:hover {
-		color:rgba(184, 228, 255, 1);
+		color: rgba(184, 228, 255, 1);
 		background-color: rgba(5, 159, 255, 1);
 	}
+
 	.txtAreaDiv {
-		width:1000px;
+		width: 1000px;
+		margin-left: 75px;
+	}
+	.coment {
+		float:right;
+		margin-top : 51px;
 		margin-left:75px;
+		
 	}
-	.txtArea {
-	}
-	
+
 	.table {
-		margin-left:75px;
+		margin-left: 75px;
 	}
-	
+
+	.showtable {
+		width: 400px;
+	}
 }

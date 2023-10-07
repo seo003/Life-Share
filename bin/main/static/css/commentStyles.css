@@ -30,7 +30,7 @@
 	background-clip: border-box;
 	border: var(--bs-card-border-width) solid var(--bs-card-border-color);
 	border-radius: var(--bs-card-border-radius);
-
+	
 }
 
 .card>hr {
@@ -176,9 +176,9 @@
 }
 
 .comments-section {
-	width: 400px;
+	width: 500px;
 	/* You can adjust the percentage to your preferred width */
-
+	margin-left:70px;
 }
 
 .ms-3 {

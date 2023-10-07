@@ -1,3 +1,5 @@
+<%@page import="com.example.demo.dto.BbsDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
@@ -11,65 +13,49 @@
 <div id="layoutSidenav">
 	<div id="layoutSidenav_content">
 		<main>
+			<%
+			ArrayList<BbsDTO> bbsList = (ArrayList) session.getAttribute("bbsList");
+			%>
 			<div class="content-layout">
 				<div class="favorites-boards-list">
 
 					<div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
-							<img class="imgRound" src="qk.jpg">quokka <img
-								class="favorites-board-image" src="qk.jpg">
+							<img class="imgRound" src="qk.jpg">quokka 
+							<a class="one" href="/myBbsOne"><img class="favorites-board-image" src="qk.jpg"></a>
 						</div>
+						<a class="one" href="/myBbsOne">
 						<div class="title">
 							<div class="favorites-board-Date">2003-02-12 10시 23분</div>
 							<div class="favorites-board-heart">♥ 5</div>
 							<div class="favorites-board-title">쿼카귀여워</div>
 						</div>
+						</a>
 					</div>
 
+					<%
+					BbsDTO bbsInfo = new BbsDTO();
+					for (int i = bbsList.size()-1; i >= 0; i--) {
+						bbsInfo = bbsList.get(i);
+					%>
 					<div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
-							<img class="imgRound" src="#"> 이름 <img
-								class="favorites-board-image" src="#">
+							<img class="imgRound" src="#"> <%= bbsInfo.getUserId() %>
+							<a class="one" href="/myBbsOne/<%=bbsInfo.getBbsId() %>"><img class="favorites-board-image" src="#"></a>
 						</div>
+						<a class="one" href="/myBbsOne/<%=bbsInfo.getBbsId()%>">
 						<div class="title">
-							<div class="favorites-board-Date">2003-02-12 10시 23분</div>
+							<div class="favorites-board-Date"><%=bbsInfo.getBbsDate()%></div>
 							<div class="favorites-board-heart">♥ 15</div>
-							<div class="favorites-board-title">1- Store Visit 6/3/16</div>
+							<div class="favorites-board-title"><%=bbsInfo.getBbsContent()%>
+							</div>
 						</div>
+						</a>
 					</div>
-					<div class="favorites-board-item">
-						<div class="favorites-board-thumbnails">
-							<img class="imgRound" src="#"> 이름 <img
-								class="favorites-board-image" src="#">
-						</div>
-						<div class="title">
-							<div class="favorites-board-Date">2003-02-12 10시 23분</div>
-							<div class="favorites-board-heart">♥ 15</div>
-							<div class="favorites-board-title">1- Store Visit 6/3/16</div>
-						</div>
-					</div>
-					<div class="favorites-board-item">
-						<div class="favorites-board-thumbnails">
-							<img class="imgRound" src="#"> 이름 <img
-								class="favorites-board-image" src="#">
-						</div>
-						<div class="title">
-							<div class="favorites-board-Date">2003-02-12 10시 23분</div>
-							<div class="favorites-board-heart">♥ 15</div>
-							<div class="favorites-board-title">1- Store Visit 6/3/16</div>
-						</div>
-					</div>
-					<div class="favorites-board-item">
-						<div class="favorites-board-thumbnails">
-							<img class="imgRound" src="#"> 이름 <img
-								class="favorites-board-image" src="#">
-						</div>
-						<div class="title">
-							<div class="favorites-board-Date">2003-02-12 10시 23분</div>
-							<div class="favorites-board-heart">♥ 15</div>
-							<div class="favorites-board-title">1- Store Visit 6/3/16</div>
-						</div>
-					</div>
+					<%
+					}
+					%>
+					
 					<a href="/bbsWrite" class="float"> <i class="fa-solid fa-pen"></i>
 					</a>
 				</div>

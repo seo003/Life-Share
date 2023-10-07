@@ -26,4 +26,12 @@ public class BbsService {
 		return bbsMapper.getMyBbsAll(loginId);
 	}
 
+	public ArrayList<BbsDTO> getBbsAll() {
+		return bbsMapper.getBbsAll();
+	}
+
+	public BbsDTO getBbsOne(int bbsId) {
+		return bbsMapper.getBbsOne(bbsId);
+	}
+
 }

@@ -6,11 +6,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.example.demo.mapper.BbsMapper">
 
 	<insert id="bbsWrite" parameterType="com.example.demo.dto.BbsDTO">
-		INSERT INTO bbs(bbsId, userId, bbsContent) values (#{bbsId}, #{userId}, #{bbsContent})
+		INSERT INTO bbs(userId, bbsContent) values (#{userId}, #{bbsContent})
 	</insert>
 	
-	<!-- resultType="List"-->
 	<select id="getMyBbsAll" parameterType="com.example.demo.dto.BbsDTO" resultType="com.example.demo.dto.BbsDTO">
 		SELECT * FROM bbs WHERE userId = #{userId}
+	</select>
+	
+	<select id="getBbsAll" parameterType="com.example.demo.dto.BbsDTO" resultType="com.example.demo.dto.BbsDTO">
+		SELECT * FROM bbs
+	</select>
+	
+	<select id="getBbsOne" parameterType="int" resultType="com.example.demo.dto.BbsDTO">
+		SELECT * FROM bbs WHERE bbsId = #{bbsId}
 	</select>
 </mapper>

@@ -14,4 +14,8 @@ public interface BbsMapper {
 
 	public ArrayList<BbsDTO> getMyBbsAll(String loginId);
 
+	public ArrayList<BbsDTO> getBbsAll();
+
+	public BbsDTO getBbsOne(int bbsId);
+
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.demo.dto.BbsDTO;
@@ -23,7 +24,18 @@ public class BbsController {
 	public BbsController(BbsService bbsService) {
 		this.bbsService = bbsService;
 	}
+	
 
+	@GetMapping("/")
+    public String home(HttpSession session, Model model) {
+		ArrayList<BbsDTO> bbsDTO = new ArrayList<>();
+		bbsDTO = bbsService.getBbsAll();
+		session.setAttribute("bbsList", bbsDTO);
+		
+        return "home"; //뷰 반환(home)
+    }
+	
+	
 	@GetMapping("/myBbs")
 	public String myBbs(HttpSession session, Model model) {
 		String loginId = (String) session.getAttribute("loginId");
@@ -68,6 +80,13 @@ public class BbsController {
 			return "alert";
 	}
 	
+	@GetMapping("/bbsOne/{bbsId}") 
+	public String myBbsOne(@PathVariable int bbsId, HttpSession session) {
+	    BbsDTO bbsDTO = bbsService.getBbsOne(bbsId);
+	    session.setAttribute("bbsOne", bbsDTO);
+	    
+	    return "bbsOne";
+	}
 	
 	
 }

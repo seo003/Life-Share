@@ -43,9 +43,9 @@
 					%>
 					<div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
-							<a class="one" href="/myBbsOne/<%=bbsInfo.getBbsId()%>"><img class="favorites-board-image" src="#"> </a>
+							<a class="one" href="/bbsOne/<%=bbsInfo.getBbsId()%>"><img class="favorites-board-image" src="#"> </a>
 						</div>
-						<a class="one" href="/myBbsOne/<%=bbsInfo.getBbsId()%>">
+						<a class="one" href="/bbsOne/<%=bbsInfo.getBbsId()%>">
 						<div class="title">
 							<div class="favorites-board-Date"><%=bbsInfo.getBbsDate()%></div>
 							<div class="favorites-board-heart">♥ 15</div>

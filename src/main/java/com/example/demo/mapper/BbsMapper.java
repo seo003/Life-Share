@@ -16,6 +16,6 @@ public interface BbsMapper {
 
 	public ArrayList<BbsDTO> getBbsAll();
 
-	public BbsDTO getBbsOne(int bbsId);
+	public BbsDTO getBbsOne(int bbsId);	
 
 }

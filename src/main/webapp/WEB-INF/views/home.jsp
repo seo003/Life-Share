@@ -22,9 +22,9 @@
 					<div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
 							<img class="imgRound" src="qk.jpg">quokka 
-							<a class="one" href="/myBbsOne"><img class="favorites-board-image" src="qk.jpg"></a>
+							<a class="one" href="/bbsOne"><img class="favorites-board-image" src="qk.jpg"></a>
 						</div>
-						<a class="one" href="/myBbsOne">
+						<a class="one" href="/bbsOne">
 						<div class="title">
 							<div class="favorites-board-Date">2003-02-12 10시 23분</div>
 							<div class="favorites-board-heart">♥ 5</div>
@@ -41,9 +41,9 @@
 					<div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
 							<img class="imgRound" src="#"> <%= bbsInfo.getUserId() %>
-							<a class="one" href="/myBbsOne/<%=bbsInfo.getBbsId() %>"><img class="favorites-board-image" src="#"></a>
+							<a class="one" href="/bbsOne/<%=bbsInfo.getBbsId() %>"><img class="favorites-board-image" src="#"></a>
 						</div>
-						<a class="one" href="/myBbsOne/<%=bbsInfo.getBbsId()%>">
+						<a class="one" href="/bbsOne/<%=bbsInfo.getBbsId()%>">
 						<div class="title">
 							<div class="favorites-board-Date"><%=bbsInfo.getBbsDate()%></div>
 							<div class="favorites-board-heart">♥ 15</div>

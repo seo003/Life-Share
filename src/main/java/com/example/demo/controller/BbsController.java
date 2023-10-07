@@ -83,6 +83,7 @@ public class BbsController {
 	@GetMapping("/bbsOne/{bbsId}") 
 	public String myBbsOne(@PathVariable int bbsId, HttpSession session) {
 	    BbsDTO bbsDTO = bbsService.getBbsOne(bbsId);
+
 	    session.setAttribute("bbsOne", bbsDTO);
 	    
 	    return "bbsOne";

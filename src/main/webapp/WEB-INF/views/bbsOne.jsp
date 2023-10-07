@@ -19,7 +19,6 @@
 				<div class="favorites-boards-list">
 
 					<div class="favorites-board-item">
-
 						<div class="title">
 							<table class="showtable">
 								<tbody class="showTable">
@@ -27,8 +26,7 @@
 										<td>
 											<div class="favorites-board-thumbnails">
 												<img class="favorites-board-image" src="#">
-												<div class="favorites-board-new create-new create-text">이미지를
-													추가해주세요</div>
+												<div class="favorites-board-new create-new create-text">이미지를 추가해주세요</div>
 											</div>
 										</td>
 									</tr>

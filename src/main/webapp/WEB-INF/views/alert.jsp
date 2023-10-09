@@ -1,3 +1,4 @@
+<%@page import="com.example.demo.dto.BbsDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,6 +9,8 @@
 </head>
 <body>
 	<script>
+	<% BbsDTO bbsDTO = (BbsDTO) session.getAttribute("bbsOne");%>
+		var bbsDTO = "${bbsOne}";
 		var msg = "${msg}";
 		var alertMsg = "";
 		var url = "";
@@ -65,6 +68,12 @@
 			alertMsg = "내용을 입력해주세요.";
 			url = "bbsWrite";
 			break;
+		case "bbsUpdateY":
+			alertMsg = "수정이 완료되었습니다.";
+			url = "bbsOne/<%=bbsDTO.getBbsId() %>"}"
+		case "bbsUpdateN":
+			alertMsg = "수정이 실패하였습니다.";
+			url = "bbsOneUpdate"
 		}
 
 		alert(alertMsg);

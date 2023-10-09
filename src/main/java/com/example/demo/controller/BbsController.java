@@ -81,13 +81,34 @@ public class BbsController {
 	}
 	
 	@GetMapping("/bbsOne/{bbsId}") 
-	public String myBbsOne(@PathVariable int bbsId, HttpSession session) {
+	public String bbsOne(@PathVariable int bbsId, HttpSession session) {
 	    BbsDTO bbsDTO = bbsService.getBbsOne(bbsId);
-
+	    
 	    session.setAttribute("bbsOne", bbsDTO);
 	    
 	    return "bbsOne";
 	}
 	
+	@GetMapping("bbsOneDesign")
+	public String design() {
+		return "bbsOneDesign";
+	}
+	//@GetMapping("bbsOneUpdate/{bbsId}") 하면 오류남
+	@GetMapping("bbsOneUpdate")
+	public String bbsOneUpdate() {
+		return "bbsOneUpdate";
+	}
+	
+	@PostMapping("bbsOneUpdate")
+	public String bbsOneUpdate(BbsDTO bbsDTO, String bbsContent, Model model) {
+		int result = bbsService.bbsOneUpdate(bbsDTO.getBbsId(), bbsContent);
+		if (result > 0) {
+			model.addAttribute("msg", "bbsUpdateY");
+		}else {
+			model.addAttribute("msg", "bbsUpdateN");
+		}
+		
+		return "alert";
+	}
 	
 }

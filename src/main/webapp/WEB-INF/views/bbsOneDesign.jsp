@@ -17,30 +17,30 @@
 			%>
 			<div class="content-layout">
 				<div class="favorites-boards-list">
-
+				
 					<div class="favorites-board-item">
+					
 						<div class="title">
-
-							<input type="submit" value="삭제" class="button"> 
-							<a href="/bbsOneUpdate"><input type="submit" value="수정" class="button"></a>
-
+						
+							<input type="submit" value="삭제" class="button">
+							<input type="submit" value="수정" class="button">
+							
 							<table class="showtable">
 								<tbody class="showTable">
 									<tr>
 										<td>
 											<div class="favorites-board-thumbnails">
 												<img class="favorites-board-image" src="#">
-												<div class="favorites-board-new create-new create-text">이미지를
-													추가해주세요</div>
+												<div class="favorites-board-new create-new create-text"></div>
 											</div>
 										</td>
 									</tr>
 									<tr>
 										<td class="td">
 											<div class="content">
-												<div class="favorites-board-Date date"><%=bbsDTO.getBbsDate()%></div>
+												<div class="favorites-board-Date date">날짜</div>
 												<div class="favorites-board-heart heart">♥ 5</div>
-												<div class="contentOne"><%=bbsDTO.getBbsContent()%></div>
+												<div class="contentOne">내애애애애애애애애애애용</div>
 											</div>
 										</td>
 									</tr>

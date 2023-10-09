@@ -18,6 +18,7 @@
 			%>
 			<div class="content-layout">
 				<div class="favorites-boards-list">
+				
 					<div class="favorites-board-new">
 						<a href="/bbsWrite">
 							<div class="create-new">

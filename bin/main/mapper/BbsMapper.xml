@@ -10,15 +10,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="getMyBbsAll" parameterType="com.example.demo.dto.BbsDTO" resultType="com.example.demo.dto.BbsDTO">
-		SELECT * FROM bbs WHERE userId = #{userId};
+		SELECT * FROM bbs WHERE userId = #{userId} AND bbsAvailable=1;
 	</select>
 	
 	<select id="getBbsAll" parameterType="com.example.demo.dto.BbsDTO" resultType="com.example.demo.dto.BbsDTO">
-		SELECT * FROM bbs;
+		SELECT * FROM bbs WHERE bbsAvailable=1;
 	</select>
 	
 	<select id="getBbsOne" parameterType="int" resultType="com.example.demo.dto.BbsDTO">
-		SELECT * FROM bbs WHERE bbsId = #{bbsId};
+		SELECT * FROM bbs WHERE bbsId = #{bbsId} AND bbsAvailable=1;
 	</select>
 	
 	<update id="bbsOneUpdate" parameterType="com.example.demo.dto.UserDTO">

@@ -14,7 +14,7 @@
 	<div id="layoutSidenav_content">
 		<main>
 			<%
-			ArrayList<BbsDTO> bbsList = (ArrayList) session.getAttribute("bbsList");
+			//ArrayList<BbsDTO> bbsList = (ArrayList) session.getAttribute("bbsList");
 			%>
 			<div class="content-layout">
 				<div class="favorites-boards-list">
@@ -34,16 +34,17 @@
 					</div>
 
 					<%
+					ArrayList<BbsDTO> bbsDTOList = (ArrayList) request.getAttribute("bbsDTOList");
 					BbsDTO bbsInfo = new BbsDTO();
-					for (int i = bbsList.size()-1; i >= 0; i--) {
-						bbsInfo = bbsList.get(i);
+					for (int i = bbsDTOList.size()-1; i >= 0; i--) {
+						bbsInfo = bbsDTOList.get(i);
 					%>
 					<div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
 							<img class="imgRound" src="#"> <%= bbsInfo.getUserId() %>
-							<a class="one" href="/bbsOne/<%=bbsInfo.getBbsId() %>"><img class="favorites-board-image" src="#"></a>
+							<a class="one" href="/bbsOne?bbsId=<%=bbsInfo.getBbsId()%>"><img class="favorites-board-image" src="#"></a>
 						</div>
-						<a class="one" href="/bbsOne/<%=bbsInfo.getBbsId()%>">
+						<a class="one" href="/bbsOne?bbsId=<%=bbsInfo.getBbsId()%>">
 						<div class="title">
 							<div class="favorites-board-Date"><%=bbsInfo.getBbsDate()%></div>
 							<div class="favorites-board-heart">♥ 15</div>

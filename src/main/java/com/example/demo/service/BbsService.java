@@ -29,13 +29,13 @@ public class BbsService {
 	public ArrayList<BbsDTO> getBbsAll() {
 		return bbsMapper.getBbsAll();
 	}
-	
+
 	public BbsDTO getBbsOne(int bbsId) {
 		return bbsMapper.getBbsOne(bbsId);
 	}
 
-	public int bbsOneUpdate(int bbsId, String bbsContent) {
-		return bbsMapper.bbsOneUpdate(bbsId, bbsContent);
+	public int bbsOneUpdate(String bbsContent, int bbsId) {
+		return bbsMapper.bbsOneUpdate(bbsContent, bbsId);
 	}
 
 }

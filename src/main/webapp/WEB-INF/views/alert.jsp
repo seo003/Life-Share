@@ -9,8 +9,7 @@
 </head>
 <body>
 	<script>
-	<% BbsDTO bbsDTO = (BbsDTO) session.getAttribute("bbsOne");%>
-		var bbsDTO = "${bbsOne}";
+		
 		var msg = "${msg}";
 		var alertMsg = "";
 		var url = "";
@@ -22,7 +21,7 @@
 			break;
 		case "loginDbN":
 			alertMsg = "존재하지 않는 사용자입니다.";
-			url = "login";
+			url = "/login";
 			break;
 		case "loginN":
 			alertMsg = "아이디나 비밀번호가 올바르지 않습니다.";
@@ -58,22 +57,24 @@
 			break;
 		case "bbsWriteY":
 			alertMsg = "게시물 작성이 완료되었습니다.";
-			url = "myBbs";
+			url = "/myBbs";
 			break;
 		case "bbsWriteN":
 			alertMsg = "게시물 작성이 실패하였습니다.";
-			url = "bbsWrite";
+			url = "/bbsWrite";
 			break;
 		case "bbsWriteEmpty":
 			alertMsg = "내용을 입력해주세요.";
-			url = "bbsWrite";
+			url = "/bbsWrite";
 			break;
 		case "bbsUpdateY":
 			alertMsg = "수정이 완료되었습니다.";
-			url = "bbsOne/<%=bbsDTO.getBbsId() %>"}"
+			url = "/bbsOne?bbsId=${bbsId}";
+			break;
 		case "bbsUpdateN":
 			alertMsg = "수정이 실패하였습니다.";
-			url = "bbsOneUpdate"
+			url = "/bbsOneUpdate"
+			break;
 		}
 
 		alert(alertMsg);

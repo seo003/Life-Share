@@ -12,9 +12,6 @@
 <div id="layoutSidenav">
 	<div id="layoutSidenav_content">
 		<main>
-			<%
-			BbsDTO bbsDTO = (BbsDTO) session.getAttribute("bbsOne");
-			%>
 			<div class="content-layout">
 				<div class="favorites-boards-list">
 
@@ -23,6 +20,7 @@
 							<%-- <form action="/bbsOneUpdate" method="post" name="bbsOneUpdate" enctype="multipart/form-data">--%>
 							<form action="/bbsOneUpdate" method="post" name="bbsOneUpdate">
 								<input type="submit" value="변경" class="button">
+								<input type="text" value="${bbsOne.bbsId}" name="bbsId" style="display:none;">
 								<table class="showtable">
 									<tbody class="showTable">
 										<tr>
@@ -38,7 +36,7 @@
 												<div class="content">
 													<div class="contentOne">
 														<textarea class="bbsContentUpdate" name="bbsContent"
-															id="bbsContent" rows="3" cols="50"><%=bbsDTO.getBbsContent()%></textarea>
+															id="bbsContent" rows="3" cols="50">${bbsOne.bbsContent}</textarea>
 													</div>
 												</div>
 											</td>

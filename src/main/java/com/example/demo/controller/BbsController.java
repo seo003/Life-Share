@@ -106,5 +106,16 @@ public class BbsController {
 
 		return "alert";
 	}
-
+	
+	@GetMapping("/bbsDelete")
+	public String bbsDelete(int bbsId, Model model) {
+		int result = bbsService.bbsDelete(bbsId);
+		if (result>0) {
+			model.addAttribute("msg", "bbsDeleteY");
+		} else {
+			model.addAttribute("msg", "bbsDeleteN");
+			model.addAttribute("bbsId", bbsId);
+		}
+		return "alert";
+	}
 }

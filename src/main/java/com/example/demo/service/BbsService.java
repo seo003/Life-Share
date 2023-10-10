@@ -38,4 +38,7 @@ public class BbsService {
 		return bbsMapper.bbsOneUpdate(bbsContent, bbsId);
 	}
 
+	public int bbsDelete(int bbsId) {
+		return bbsMapper.bbsDelete(bbsId);
+	}
 }

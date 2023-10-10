@@ -21,5 +21,6 @@ public interface BbsMapper {
 
 	// public int bbsOneUpdate(String bbsContent, int bbsId);
 	public int bbsOneUpdate(@Param("bbsContent") String bbsContent, @Param("bbsId") int bbsId);
-
+	
+	public int bbsDelete(int bbsId);
 }

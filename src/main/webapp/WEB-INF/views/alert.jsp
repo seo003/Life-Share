@@ -75,6 +75,14 @@
 			alertMsg = "수정이 실패하였습니다.";
 			url = "/bbsOneUpdate"
 			break;
+		case "bbsDeleteY":
+			alertMsg = "삭제되었습니다.";
+			url="/myBbs";
+			break;
+		case "bbsDeleteN":
+			alertMsg = "삭제되지 않았습니다.";
+			url="/bbsOne?bbsId=${bbsId}";
+			break;
 		}
 
 		alert(alertMsg);

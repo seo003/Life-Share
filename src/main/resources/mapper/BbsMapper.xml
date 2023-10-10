@@ -22,7 +22,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<update id="bbsOneUpdate" parameterType="com.example.demo.dto.UserDTO">
-		UPDATE bbs SET bbsContent=#{bbsContent} WHERE bbsID=#{bbsId};
+		UPDATE bbs SET bbsContent=#{bbsContent} WHERE bbsId=#{bbsId};
 	</update>
 	
+	<update id="bbsDelete" parameterType="int">
+		UPDATE bbs SET bbsAvailable=0 WHERE bbsId=#{bbsId};
+	</update>
 </mapper>

@@ -75,11 +75,12 @@
 					/*이미지크기*/
 					height: 400px;
 					border-radius: 2%;
-					
+
 				}
+
 				.favorites-board-image:hover {
-					
-					border : 2px solid white;
+
+					border: 2px solid white;
 				}
 			}
 
@@ -87,8 +88,8 @@
 				.design-board {
 					display: block;
 				}
-				
-				
+
+
 			}
 
 			.favorites-board-title {
@@ -163,47 +164,49 @@
 			}
 
 
-	}
+		}
 
-	.title {
-		width: 400px;
-		clear: both;
+		.title {
+			width: 400px;
+			clear: both;
 
-	}
+		}
 
-	.float {
-		position: fixed;
-		width: 70px;
-		height: 70px;
-		bottom: 40px;
-		right: 40px;
-		background-color: rgba(184, 228, 255, 1);
-		color: rgba(5, 159, 255, 1);
-		border-radius: 50px;
-		text-align: center;
-		box-shadow: 2px 2px 3px #999;
+		.float {
+			position: fixed;
+			width: 70px;
+			height: 70px;
+			bottom: 40px;
+			right: 40px;
+			background-color: rgba(184, 228, 255, 1);
+			color: rgba(5, 159, 255, 1);
+			border-radius: 50px;
+			text-align: center;
+			box-shadow: 2px 2px 3px #999;
 
-	}
+		}
 
 
-	.fa-pen {
-		margin-top: 25px;
-		font-size: 20px;
-	}
+		.fa-pen {
+			margin-top: 25px;
+			font-size: 20px;
+		}
 
-	.float:hover {
-		color: rgba(184, 228, 255, 1);
-		background-color: rgba(5, 159, 255, 1);
-	}
+		.float:hover {
+			color: rgba(184, 228, 255, 1);
+			background-color: rgba(5, 159, 255, 1);
+		}
 
-	.imgRound {
-		border-radius: 50%;
-		width: 50px;
-		height: 50px;
-		margin-right: 10px;
-		margin-bottom: 10px;
-	}
-	.one:hover {
-		color:rgba(5, 159, 255, 1);
+		.imgRound {
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+
+		.one:hover {
+			color: rgba(5, 159, 255, 1);
+		}
 	}
 }

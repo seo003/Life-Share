@@ -5,27 +5,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- namespace에 dao(mapper.java) -->
 <mapper namespace="com.example.demo.mapper.BbsMapper">
 
-	<insert id="bbsWrite" parameterType="com.example.demo.dto.BbsDTO">
-		INSERT INTO bbs(userId, bbsContent) values (#{userId}, #{bbsContent});
+	<insert id="bbsWrite"
+		parameterType="com.example.demo.dto.BbsDTO">
+		INSERT INTO bbs(userId, bbsContent) values (#{userId},
+		#{bbsContent});
 	</insert>
-	
+
 	<select id="getMyBbsAll" parameterType="com.example.demo.dto.BbsDTO" resultType="com.example.demo.dto.BbsDTO">
 		SELECT * FROM bbs WHERE userId = #{userId} AND bbsAvailable=1;
 	</select>
-	
-	<select id="getBbsAll" parameterType="com.example.demo.dto.BbsDTO" resultType="com.example.demo.dto.BbsDTO">
+
+	<select id="getBbsAll"
+		parameterType="com.example.demo.dto.BbsDTO"
+		resultType="com.example.demo.dto.BbsDTO">
 		SELECT * FROM bbs WHERE bbsAvailable=1;
 	</select>
-	
-	<select id="getBbsOne" parameterType="int" resultType="com.example.demo.dto.BbsDTO">
-		SELECT * FROM bbs WHERE bbsId = #{bbsId} AND bbsAvailable=1;
+
+	<select id="getBbsOne" parameterType="int"
+		resultType="com.example.demo.dto.BbsDTO">
+		SELECT * FROM bbs WHERE bbsId = #{bbsId};
 	</select>
-	
+
 	<update id="bbsOneUpdate" parameterType="com.example.demo.dto.UserDTO">
 		UPDATE bbs SET bbsContent=#{bbsContent} WHERE bbsId=#{bbsId};
 	</update>
-	
+
 	<update id="bbsDelete" parameterType="int">
 		UPDATE bbs SET bbsAvailable=0 WHERE bbsId=#{bbsId};
 	</update>
+
+	<update id="bbsRestore" parameterType="int">
+		UPDATE bbs SET bbsAvailable=1 WHERE bbsId=#{bbsId};
+	</update>
+
+	<select id="bbsDeleted" parameterType="com.example.demo.dto.BbsDTO" resultType="com.example.demo.dto.BbsDTO">
+		SELECT * FROM bbs WHERE userId = #{userId} AND bbsAvailable=0;
+	</select>
+	
+	<delete id="bbsCompletedDeleted" parameterType="int">
+		DELETE * FROM bbs WHERE bbsId=#{bbsId};
+	</delete>
 </mapper>

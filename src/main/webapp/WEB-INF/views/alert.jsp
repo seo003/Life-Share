@@ -80,8 +80,20 @@
 			url="/myBbs";
 			break;
 		case "bbsDeleteN":
-			alertMsg = "삭제되지 않았습니다.";
+			alertMsg = "요청하신 작업을 실패하였습니다.";
 			url="/bbsOne?bbsId=${bbsId}";
+			break;
+		case "bbsRestoreY":
+			alertMsg="복원 완료되었습니다.";
+			url="/myBbs";
+			break;
+		case"bbsRestoreN":
+			alertMsg="복원 실패하였습니다.";
+			url="/bbsDeleted";
+			break;
+		case "deletedNothing":
+			alertMsg="삭제된 게시물이 없습니다.";
+			url="/";
 			break;
 		}
 

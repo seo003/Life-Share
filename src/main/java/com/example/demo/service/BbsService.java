@@ -41,4 +41,18 @@ public class BbsService {
 	public int bbsDelete(int bbsId) {
 		return bbsMapper.bbsDelete(bbsId);
 	}
+
+	public int getBbsRestore(int bbsId) {
+		return bbsMapper.bbsRestore(bbsId);
+	}
+
+	public ArrayList<BbsDTO> getBbsDeleted(String userId) {
+		return bbsMapper.bbsDeleted(userId);
+	}
+
+	public int bbsCompletedDelete(int bbsId) {
+		return bbsMapper.bbsCompletedDelete(bbsId);
+		
+	}
+
 }

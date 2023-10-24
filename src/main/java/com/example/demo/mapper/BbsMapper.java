@@ -23,4 +23,10 @@ public interface BbsMapper {
 	public int bbsOneUpdate(@Param("bbsContent") String bbsContent, @Param("bbsId") int bbsId);
 	
 	public int bbsDelete(int bbsId);
+
+	public ArrayList<BbsDTO> bbsDeleted(String userId);
+
+	public int bbsRestore(int bbsId);
+
+	public int bbsCompletedDelete(int bbsId);
 }

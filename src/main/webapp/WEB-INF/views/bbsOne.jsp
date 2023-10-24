@@ -20,14 +20,24 @@
 						<div class="title">
 							<%
 							BbsDTO bbsOne = (BbsDTO) request.getAttribute("bbsOne");
-							if (loginId != null && loginId.equals(bbsOne.getUserId())) {//유저=게시글 쓴사람
+							int deleted = (int) request.getAttribute("deleted");
+
+							if (loginId != null && loginId.equals(bbsOne.getUserId()) && deleted == 0) {//유저=게시글 쓴사람
 							%>
-							<button type="button" class="button" onclick="bbsDelete('${bbsOne.bbsId}');">삭제</button> 
-							<a href="/bbsOneUpdate?bbsId=${bbsOne.bbsId}">
-							<input type="submit" value="수정" class="button"></a>
+							<button type="button" class="button" onclick="bbsDelete('${bbsOne.bbsId}');">삭제</button>
+							<a href="/bbsOneUpdate?bbsId=${bbsOne.bbsId}"> <input type="submit" value="수정" class="button"></a>
+							<%
+							}
+
+							if (deleted == 1) {
+							%>
+							<button type="button" class="button" onclick="bbsCompletedDelete('${bbsOne.bbsId}');">영구삭제</button>
+							<button type="button" class="button" onclick="bbsRestore('${bbsOne.bbsId}');">복원</button>
+							
 							<%
 							}
 							%>
+
 							<table class="showtable">
 								<tbody class="showTable">
 									<tr>
@@ -60,11 +70,24 @@
 			</div>
 		</main>
 		<script>
-				function bbsDelete(bbsId) {
-					if (window.confirm("정말로 삭제하시겠습니까?")) {
-						location.href = "/bbsDelete?bbsId=${bbsOne.bbsId}";
-					}
+			function bbsDelete(bbsId) {
+				if (window.confirm("정말로 삭제하시겠습니까?")) {
+					location.href = "/bbsDelete?bbsId=${bbsOne.bbsId}";
 				}
-			</script>
+			}
+
+			function bbsCompletedDelete(bbsId) {
+				if (window.confirm("완전히 삭제하시겠습니까?")) {
+					location.href = "/bbsCompletedDelete?bbsId=${bbsOne.bbsId}";
+				}
+			}
+			
+			function bbsRestore(bbsId) {
+				if (window.confirm("정말로 복원하시겠습니까?")) {
+					location.href = "/bbsRestore?bbsId=${bbsOne.bbsId}";
+				}
+			}
+			
+		</script>
 		<%@include file="footer.jsp"%>
 </html>

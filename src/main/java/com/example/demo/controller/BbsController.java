@@ -43,8 +43,7 @@ public class BbsController {
 			return "alert";
 		}
 
-		ArrayList<BbsDTO> bbsDTOList = new ArrayList<>();
-		bbsDTOList = bbsService.getMyBbsAll(loginId);
+		ArrayList<BbsDTO> bbsDTOList = bbsService.getMyBbsAll(loginId);
 		model.addAttribute("bbsDTOList", bbsDTOList);
 
 		return "myBbs";
@@ -79,16 +78,17 @@ public class BbsController {
 	}
 
 	@GetMapping("/bbsOne")
-	public String bbsOne(int bbsId, Model model ) {
+	public String bbsOne(int bbsId, Model model) {
 		BbsDTO bbsDTO = bbsService.getBbsOne(bbsId);
-		
+
 		model.addAttribute("bbsOne", bbsDTO);
-		
+		model.addAttribute("deleted", 0);
+
 		return "bbsOne";
 	}
 
 	@GetMapping("/bbsOneUpdate")
-	public String bbsOneUpdate(int bbsId, Model model ) {
+	public String bbsOneUpdate(int bbsId, Model model) {
 		BbsDTO bbsDTO = bbsService.getBbsOne(bbsId);
 		model.addAttribute("bbsOne", bbsDTO);
 		return "bbsOneUpdate";
@@ -106,16 +106,62 @@ public class BbsController {
 
 		return "alert";
 	}
-	
+
 	@GetMapping("/bbsDelete")
 	public String bbsDelete(int bbsId, Model model) {
 		int result = bbsService.bbsDelete(bbsId);
-		if (result>0) {
+		if (result > 0) {
 			model.addAttribute("msg", "bbsDeleteY");
 		} else {
 			model.addAttribute("msg", "bbsDeleteN");
 			model.addAttribute("bbsId", bbsId);
 		}
+		return "alert";
+	}
+
+	@GetMapping("/bbsDeleted")
+	public String bbsDeleted(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("loginId");
+		ArrayList<BbsDTO> bbsDeletedList = new ArrayList<>();
+
+		bbsDeletedList = bbsService.getBbsDeleted(userId);
+		if (bbsDeletedList.size() == 0) {
+			model.addAttribute("msg", "deletedNothing");
+			return "alert";
+		} else {
+			model.addAttribute("bbsDeletedList", bbsDeletedList);
+			return "bbsDeleted";
+		}
+	}
+
+	@GetMapping("/bbsDeletedOne")
+	public String bbsDeletedOne(int bbsId, Model model) {
+		BbsDTO bbsDTO = bbsService.getBbsOne(bbsId);
+		model.addAttribute("bbsOne", bbsDTO);
+		model.addAttribute("deleted", 1);
+
+		return "bbsOne";
+	}
+
+	@GetMapping("/bbsRestore")
+	public String bbsRestore(int bbsId, Model model) {
+		int result = bbsService.getBbsRestore(bbsId);
+		if (result > 0) {
+			model.addAttribute("msg", "bbsRestoreY");
+		} else {
+			model.addAttribute("msg", "bbsRestoreN");
+		}
+		return "alert";
+	}
+	@GetMapping("/bbsCompletedDelete")
+	public String bbsCompletedDelete(int bbsId, Model model) {
+		int result = bbsService.bbsCompletedDelete(bbsId);
+		if (result == 1) {
+			model.addAttribute("msg", "bbsCompletedDeleteY");
+		} else {
+			model.addAttribute("msg", "bbsCompletedDeleteN");
+		}
+		
 		return "alert";
 	}
 }

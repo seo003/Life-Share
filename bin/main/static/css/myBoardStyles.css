@@ -10,7 +10,7 @@
 		/* border: 1px solid silver; */
 		.favorites-board-item {
 			width: 300px;
-			margin-bottom: 13%;
+			margin-bottom: 15%;
 			/* Set margin-bottom in percentage */
 			margin-top: 3%;
 			/* Set margin-top in percentage */
@@ -114,7 +114,7 @@
 		.favorites-board-new {
 			width: 300px;
 			height: 300px;
-			margin-bottom: 13%;
+			margin-bottom: 15%;
 			/* Set margin-bottom in percentage */
 			margin-top: 3%;
 			/* Set margin-top in percentage */
@@ -205,4 +205,4 @@
 	.one:hover {
 		color:rgba(5, 159, 255, 1);
 	}
-}
+}}

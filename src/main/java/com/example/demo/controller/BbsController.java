@@ -153,6 +153,7 @@ public class BbsController {
 		}
 		return "alert";
 	}
+	
 	@GetMapping("/bbsCompletedDelete")
 	public String bbsCompletedDelete(int bbsId, Model model) {
 		int result = bbsService.bbsCompletedDelete(bbsId);
@@ -160,6 +161,7 @@ public class BbsController {
 			model.addAttribute("msg", "bbsCompletedDeleteY");
 		} else {
 			model.addAttribute("msg", "bbsCompletedDeleteN");
+			model.addAttribute("bbsId", bbsId);
 		}
 		
 		return "alert";

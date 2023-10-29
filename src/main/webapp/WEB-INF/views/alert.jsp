@@ -95,6 +95,13 @@
 			alertMsg="삭제된 게시물이 없습니다.";
 			url="/";
 			break;
+		case "bbsCompletedDeleteY":
+			alertMsg="영구삭제되었습니다.";
+			url="/bbsDeleted";
+			break;
+		case "bbsCompletedDeleteN":
+			alertMsh="삭제 실패하였습니다.";
+			url="/bbsOne?bbsId=${bbsId}"
 		}
 
 		alert(alertMsg);

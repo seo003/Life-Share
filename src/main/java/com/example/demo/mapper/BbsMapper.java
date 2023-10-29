@@ -20,7 +20,7 @@ public interface BbsMapper {
 	public BbsDTO getBbsOne(int bbsId);
 
 	// public int bbsOneUpdate(String bbsContent, int bbsId);
-	public int bbsOneUpdate(@Param("bbsContent") String bbsContent, @Param("bbsId") int bbsId);
+	public int bbsOneUpdDDate(@Param("bbsContent") String bbsContent, @Param("bbsId") int bbsId);
 	
 	public int bbsDelete(int bbsId);
 

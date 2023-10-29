@@ -42,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM bbs WHERE userId = #{userId} AND bbsAvailable=0;
 	</select>
 	
-	<delete id="bbsCompletedDeleted" parameterType="int">
-		DELETE * FROM bbs WHERE bbsId=#{bbsId};
+	<delete id="bbsCompletedDelete" parameterType="int">
+		DELETE FROM bbs WHERE bbsId=#{bbsId};
 	</delete>
 </mapper>

@@ -19,7 +19,11 @@
 			<!-- Main -->
 			<div class="main">
 				<h2>PROFILE</h2>
+
 				<div class="card">
+					<div class="card-image">
+						<img class="profileImage" src="qk.jpg">
+					</div>
 					<div class="card-body">
 						<a href="/profileUpdate"><i class="fa fa-pen fa-xs edit"></i></a>
 						<table>
@@ -61,7 +65,8 @@
 								</tr>
 							</tbody>
 						</table>
-						<button type="button" onclick="userDelete('<%=info.getUserId()%>');">
+						<button type="button"
+							onclick="userDelete('<%=info.getUserId()%>');">
 							<a class="btn btn-primary">탈퇴</a>
 						</button>
 					</div>

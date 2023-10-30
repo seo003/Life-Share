@@ -127,8 +127,8 @@ hr {
 
 /* Main */
 .main {
-	margin-top: 10%;
-	margin-left: 29%;
+	margin-top:20px;
+	margin-left: 20px;
 	font-size: 28px;
 	padding: 0 10px;
 	width: 58%;
@@ -145,17 +145,35 @@ hr {
 	background-color: #fff;
 	border-radius: 18px;
 	box-shadow: 1px 1px 8px 0 grey;
-	height: 400px;
-	width: 600px;
+	height:580px;
+	width: 800px;
 	margin-bottom: 20px;
-	padding: 20px 0 20px 50px;
+	padding: 20px 20px 20px 20px;
+	
 }
+
+.profileImage {
+	border-radius: 100px;
+	width: 200px; 
+    height: auto; 
+    border:1px solid;
+}
+.profileFile {
+	
+    font-size: 16px;
+    margin-left:10px;
+}
+
 
 .main .card table {
 	border: none;
 	font-size: 16px;
 	height: 270px;
-	width: 80%;
+	width: 100%;
+
+}
+.main .card .card-image {
+	font-size: 16px;
 }
 
 button {

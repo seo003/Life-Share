@@ -35,6 +35,16 @@ public class UserService{
 		}
 	}
 	
+	public Integer profileUpdateFile(UserDTO userDTO) {
+		Integer result = userMapper.profileUpdate(userDTO);
+		//System.out.println(result); 
+		if(result == null) {
+			return 0;
+		}else {
+			return result;
+		}
+	}
+	
 	public int userDelete(String userId) {
 		return userMapper.userDelete(userId);
 	}

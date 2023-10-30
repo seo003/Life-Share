@@ -1,8 +1,12 @@
 package com.example.demo.controller;
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute; //-> RequestParam
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.dto.UserDTO;
 import com.example.demo.service.UserService;
@@ -89,16 +94,41 @@ public class UserController {
 
 	@PostMapping("/profileUpdate")
 	public String profileUpdate(String userName, String userId, String userPw, String pwcheck, String userPhone,
-			String userEmail, String userGender, String userBirth, @ModelAttribute UserDTO userDTO, Model model) {
+			String userEmail, String userGender, String userBirth, @RequestParam("file") MultipartFile uploadFile,
+			@ModelAttribute UserDTO userDTO, Model model) {
 		if (userPw.equals(pwcheck)) {
-			UserDTO newInfo = new UserDTO(userName, userId, userPw, userPhone, userEmail, userGender, userBirth);
-			// System.out.println(newInfo.toString());
-			Integer result = userService.profileUpdate(newInfo);
-			if (result > 0) {
-				model.addAttribute("msg", "pUpdateY");
-				return "alert";
-			} else {
-				model.addAttribute("msg", "pUpdateN");
+			try {
+				String fileName = null;
+				String defaultFilePath = "c://SWproject/src/main/resource/static/profileImage"; //파일 저장 경로
+				String filePath = null;
+				if (!uploadFile.isEmpty()) {
+					String originFileName = uploadFile.getOriginalFilename(); //원본 파일 이름 가져오기
+					String ext = FilenameUtils.getExtension(originFileName); //파일 이름 중복되지않게 이름 변경
+					UUID uuid = UUID.randomUUID();
+					fileName = uuid + "_" + ext;
+					filePath = defaultFilePath + fileName;
+					uploadFile.transferTo(new File(filePath));
+				}
+				
+				UserDTO newInfo = new UserDTO(userName, userId, userPw, userPhone, userEmail, userGender, userBirth);
+				Integer result;
+				if (fileName != null) { // 이미지 업로드했으면
+					newInfo.setFileName(fileName);
+					newInfo.setFilePath(filePath);
+					result = userService.profileUpdateFile(newInfo);
+				} else {
+				// System.out.println(newInfo.toString());
+				result = userService.profileUpdate(newInfo);}
+				if (result > 0) {
+					model.addAttribute("msg", "pUpdateY");
+					return "alert";
+				} else {
+					model.addAttribute("msg", "pUpdateN");
+					return "alert";
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				model.addAttribute("msg", "fileUploadF");
 				return "alert";
 			}
 		} else { // 비밀번호 다름
@@ -106,10 +136,10 @@ public class UserController {
 			return "alert";
 		}
 	}
-	
+
 	@GetMapping("/userDelete/{userId}")
 	public String userDelete(@PathVariable String userId, Model model, HttpSession session) {
-							//@PathVariable("userId") String userId
+		// @PathVariable("userId") String userId
 		int result = userService.userDelete(userId);
 
 		if (result > 0) {

@@ -9,7 +9,6 @@
 </head>
 <body>
 	<script>
-		
 		var msg = "${msg}";
 		var alertMsg = "";
 		var url = "";
@@ -77,31 +76,36 @@
 			break;
 		case "bbsDeleteY":
 			alertMsg = "삭제되었습니다.";
-			url="/myBbs";
+			url = "/myBbs";
 			break;
 		case "bbsDeleteN":
 			alertMsg = "요청하신 작업을 실패하였습니다.";
-			url="/bbsOne?bbsId=${bbsId}";
+			url = "/bbsOne?bbsId=${bbsId}";
 			break;
 		case "bbsRestoreY":
-			alertMsg="복원 완료되었습니다.";
-			url="/myBbs";
+			alertMsg = "복원 완료되었습니다.";
+			url = "/myBbs";
 			break;
-		case"bbsRestoreN":
-			alertMsg="복원 실패하였습니다.";
-			url="/bbsDeleted";
+		case "bbsRestoreN":
+			alertMsg = "복원 실패하였습니다.";
+			url = "/bbsDeleted";
 			break;
 		case "deletedNothing":
-			alertMsg="삭제된 게시물이 없습니다.";
-			url="/";
+			alertMsg = "삭제된 게시물이 없습니다.";
+			url = "/";
 			break;
 		case "bbsCompletedDeleteY":
-			alertMsg="영구삭제되었습니다.";
-			url="/bbsDeleted";
+			alertMsg = "영구삭제되었습니다.";
+			url = "/bbsDeleted";
 			break;
 		case "bbsCompletedDeleteN":
-			alertMsh="삭제 실패하였습니다.";
-			url="/bbsOne?bbsId=${bbsId}"
+			alertMsg = "삭제 실패하였습니다.";
+			url = "/bbsOne?bbsId=${bbsId}";
+			break;
+		case "fileUploadF":
+			alterMsg = "파일 업로드가 실패하였습니다.";
+			url = "profileUpdate";
+			break;
 		}
 
 		alert(alertMsg);

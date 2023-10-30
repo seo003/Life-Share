@@ -13,6 +13,8 @@ public interface UserMapper {
 	public Integer profileUpdate(UserDTO userDTO);
 	// 수정에 성공한 행의 개수를 반환(실패시 0 반환) -> int
 	
+	public Integer profileUpdateFile(UserDTO userDTO);
+	
 	public int userDelete(String userId);
 	// 삭제 성공한 행 개수 반환
 }

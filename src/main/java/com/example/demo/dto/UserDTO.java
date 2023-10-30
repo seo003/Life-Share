@@ -8,6 +8,8 @@ public class UserDTO {
 	private String userEmail;
 	private String userGender;
 	private String userBirth;
+	private String fileName;
+	private String filePath;
 
 	public String getUserName() {
 		return userName;
@@ -64,6 +66,23 @@ public class UserDTO {
 	public void setUserBirth(String userBirth) {
 		this.userBirth = userBirth;
 	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
 
 	public UserDTO(String userName, String userId, String userPw, String userPhone, 
 			String userEmail, String userGender,String userBirth) {

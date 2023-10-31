@@ -8,8 +8,7 @@ public class UserDTO {
 	private String userEmail;
 	private String userGender;
 	private String userBirth;
-	private String fileName;
-	private String filePath;
+	private String userFileName;
 
 	public String getUserName() {
 		return userName;
@@ -67,21 +66,14 @@ public class UserDTO {
 		this.userBirth = userBirth;
 	}
 
-	public String getFileName() {
-		return fileName;
+	public String getUserFileName() {
+		return userFileName;
 	}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setUserFileName(String userFileName) {
+		this.userFileName = userFileName;
 	}
 
-	public String getFilePath() {
-		return filePath;
-	}
-
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
-	}
 
 
 	public UserDTO(String userName, String userId, String userPw, String userPhone, 
@@ -98,7 +90,7 @@ public class UserDTO {
 	@Override
 	public String toString() {
 		return "VALUE : " + userName + ", " + userId + ", "+ userPw + ", "+ userPhone + ", "+ userEmail + ", "
-				+ userGender + ", "+ userBirth + "  = END =  ";
+				+ userGender + ", "+ userBirth + ", "+ userFileName + "  = END =  ";
 	}
 	
 }

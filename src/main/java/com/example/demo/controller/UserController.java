@@ -93,32 +93,34 @@ public class UserController {
 	}
 
 	@PostMapping("/profileUpdate")
-	public String profileUpdate(String userName, String userId, String userPw, String pwcheck, String userPhone,
-			String userEmail, String userGender, String userBirth, @RequestParam("file") MultipartFile uploadFile,
-			@ModelAttribute UserDTO userDTO, Model model) {
+	public String profileUpdate(@RequestParam("file") MultipartFile uploadFile, UserDTO userDTO, Model model,
+			String pwcheck) {
+		String userPw = userDTO.getUserPw();
+
 		if (userPw.equals(pwcheck)) {
 			try {
 				String fileName = null;
-				String defaultFilePath = "c://SWproject/src/main/resource/static/profileImage"; //파일 저장 경로
+				String defaultFilePath = "C:\\SWproject\\SWproject\\src\\main\\resources\\static\\profileImage\\"; // 파일 저장 경로
 				String filePath = null;
 				if (!uploadFile.isEmpty()) {
-					String originFileName = uploadFile.getOriginalFilename(); //원본 파일 이름 가져오기
-					String ext = FilenameUtils.getExtension(originFileName); //파일 이름 중복되지않게 이름 변경
+					String originFileName = uploadFile.getOriginalFilename(); // 원본 파일 이름 가져오기
+					String ext = FilenameUtils.getExtension(originFileName); // 파일 이름 중복되지않게 이름 변경
 					UUID uuid = UUID.randomUUID();
-					fileName = uuid + "_" + ext;
+					fileName = uuid + "." + ext;
 					filePath = defaultFilePath + fileName;
+					System.out.println(filePath);
 					uploadFile.transferTo(new File(filePath));
 				}
-				
-				UserDTO newInfo = new UserDTO(userName, userId, userPw, userPhone, userEmail, userGender, userBirth);
 				Integer result;
+				System.out.println("fileName " + fileName);
 				if (fileName != null) { // 이미지 업로드했으면
-					newInfo.setFileName(fileName);
-					newInfo.setFilePath(filePath);
-					result = userService.profileUpdateFile(newInfo);
+					userDTO.setUserFileName(fileName);
+					System.out.println(fileName);
+					result = userService.profileUpdateFile(userDTO);
 				} else {
-				// System.out.println(newInfo.toString());
-				result = userService.profileUpdate(newInfo);}
+					// System.out.println(userDTO.toString());
+					result = userService.profileUpdate(userDTO);
+				}
 				if (result > 0) {
 					model.addAttribute("msg", "pUpdateY");
 					return "alert";

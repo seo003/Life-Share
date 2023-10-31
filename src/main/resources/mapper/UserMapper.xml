@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="profileUpdateFile" parameterType="com.example.demo.dto.UserDTO">
 		UPDATE users SET userName = #{userName}, userPw = #{userPw}, userPhone = #{userPhone}, 
-		userEmail = #{userEmail}, userGender = #{userGender}, userBirth = #{userBirth}, fileName = #{fileName}, filePath = #{filePath}
+		userEmail = #{userEmail}, userGender = #{userGender}, userBirth = #{userBirth}, userFileName = #{userFileName}
 		WHERE userId = #{userId};
 	</update>
 	

@@ -36,7 +36,7 @@ public class UserService{
 	}
 	
 	public Integer profileUpdateFile(UserDTO userDTO) {
-		Integer result = userMapper.profileUpdate(userDTO);
+		Integer result = userMapper.profileUpdateFile(userDTO);
 		//System.out.println(result); 
 		if(result == null) {
 			return 0;

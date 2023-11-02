@@ -18,12 +18,15 @@
 
 					<div class="favorites-board-item">
 						<div class="title">
+							
 							<%
 							BbsDTO bbsOne = (BbsDTO) request.getAttribute("bbsOne");
-							int deleted = (int) request.getAttribute("deleted");
-
+							int deleted = (int) request.getAttribute("deleted");%>
+							<img class="imgRound" src="/profileImage/<%=bbsOne.getProfileImage()%>"><%=bbsOne.getUserId() %>
+							<%
 							if (loginId != null && loginId.equals(bbsOne.getUserId()) && deleted == 0) {//유저=게시글 쓴사람
 							%>
+							
 							<button type="button" class="button" onclick="bbsDelete('${bbsOne.bbsId}');">삭제</button>
 							<a href="/bbsOneUpdate?bbsId=${bbsOne.bbsId}"> <input type="submit" value="수정" class="button"></a>
 							<%

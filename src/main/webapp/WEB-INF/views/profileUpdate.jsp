@@ -22,7 +22,7 @@
 				<form action="/profileUpdate" method="post" name="profileUpdate" enctype="multipart/form-data">
 					<div class="card">
 						<div class="card-image">
-							프로필 이미지를 선택해주세요.<input type="file" name="file" class="profileFile">
+							프로필 이미지를 선택해주세요.<input type="file" name="file" class="profileFile">	
 						</div>
 						<div class="card-body">
 							<table>

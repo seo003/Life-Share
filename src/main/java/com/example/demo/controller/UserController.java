@@ -1,18 +1,11 @@
 package com.example.demo.controller;
 
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute; //-> RequestParam의 묶음형태..클래스로 한번에 매핑
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -95,48 +88,17 @@ public class UserController {
 	@PostMapping("/profileUpdate")
 	public String profileUpdate(@RequestParam("file") MultipartFile uploadFile, UserDTO userDTO, Model model,
 			String pwcheck) {
-		String userPw = userDTO.getUserPw();
-
-		if (userPw.equals(pwcheck)) {
-			try {
-				String fileName = null;
-				String defaultFilePath = "C:\\SWproject\\SWproject\\src\\main\\resources\\static\\profileImage\\"; // 파일 저장 경로
-				String filePath = null;
-				if (!uploadFile.isEmpty()) {
-					String originFileName = uploadFile.getOriginalFilename(); // 원본 파일 이름 가져오기
-					String ext = FilenameUtils.getExtension(originFileName); // 파일 이름 중복되지않게 이름 변경
-					UUID uuid = UUID.randomUUID();
-					fileName = uuid + "." + ext;
-					filePath = defaultFilePath + fileName;
-					System.out.println(filePath);
-					uploadFile.transferTo(new File(filePath));
-				}
-				Integer result;
-				System.out.println("fileName " + fileName);
-				if (fileName != null) { // 이미지 업로드했으면
-					userDTO.setUserFileName(fileName);
-					System.out.println(fileName);
-					result = userService.profileUpdateFile(userDTO);
-				} else {
-					// System.out.println(userDTO.toString());
-					result = userService.profileUpdate(userDTO);
-				}
-				if (result > 0) {
-					model.addAttribute("msg", "pUpdateY");
-					return "alert";
-				} else {
-					model.addAttribute("msg", "pUpdateN");
-					return "alert";
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				model.addAttribute("msg", "fileUploadF");
-				return "alert";
-			}
-		} else { // 비밀번호 다름
-			model.addAttribute("msg", "pwMatchFail");
-			return "alert";
-		}
+		Integer result = userService.profileUpdate(uploadFile, userDTO, pwcheck);
+		if (result > 0) {
+            model.addAttribute("msg", "pUpdateY");
+            return "alert";
+        } else if (result == 0) {
+            model.addAttribute("msg", "pUpdateN");
+            return "alert";
+        } else {
+            model.addAttribute("msg", "pwMatchFail");
+            return "alert";
+        }
 	}
 
 	@GetMapping("/userDelete/{userId}")

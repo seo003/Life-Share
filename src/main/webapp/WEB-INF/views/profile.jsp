@@ -22,7 +22,18 @@
 
 				<div class="card">
 					<div class="card-image">
-						<img class="profileImage" src="/profileImage/<%=info.getUserFileName() %>">
+						<%
+						if (info.getUserFileName() == null) {
+						%>
+						<img class="profileImage" src="/profileImage/defaultProfile.png">
+						<%
+						} else {
+						%>
+						<img class="profileImage" src="/profileImage/<%=info.getUserFileName()%>">
+						<%
+						}
+						%>
+						
 					</div>
 					<div class="card-body">
 						<a href="/profileUpdate"><i class="fa fa-pen fa-xs edit"></i></a>

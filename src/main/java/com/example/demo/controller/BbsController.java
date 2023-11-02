@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.dto.BbsDTO;
 import com.example.demo.service.BbsService;
+import com.example.demo.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -19,16 +20,19 @@ import jakarta.servlet.http.HttpSession;
 public class BbsController {
 	// 생성자 주입
 	private final BbsService bbsService;
+	private final UserService userService;
 
 	@Autowired
-	public BbsController(BbsService bbsService) {
+	public BbsController(BbsService bbsService, UserService userService) {
 		this.bbsService = bbsService;
+		this.userService = userService;
 	}
 
 	@GetMapping("/")
 	public String home(Model model) {
 		ArrayList<BbsDTO> bbsDTOList = new ArrayList<>();
 		bbsDTOList = bbsService.getBbsAll();
+		bbsDTOList = userService.getAllUserProfile(bbsDTOList);
 		model.addAttribute("bbsDTOList", bbsDTOList);
 
 		return "home";
@@ -80,7 +84,8 @@ public class BbsController {
 	@GetMapping("/bbsOne")
 	public String bbsOne(int bbsId, Model model) {
 		BbsDTO bbsDTO = bbsService.getBbsOne(bbsId);
-
+		String userProfile = userService.getUserFileName(bbsDTO.getUserId());
+		bbsDTO.setProfileImage(userProfile);
 		model.addAttribute("bbsOne", bbsDTO);
 		model.addAttribute("deleted", 0);
 

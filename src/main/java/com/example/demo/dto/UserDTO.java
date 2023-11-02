@@ -74,8 +74,6 @@ public class UserDTO {
 		this.userFileName = userFileName;
 	}
 
-
-
 	public UserDTO(String userName, String userId, String userPw, String userPhone, 
 			String userEmail, String userGender,String userBirth) {
 		this.userName = userName;

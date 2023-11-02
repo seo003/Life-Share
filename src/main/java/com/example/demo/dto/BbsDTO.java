@@ -9,6 +9,8 @@ public class BbsDTO {
 	private Timestamp bbsDate;
 	private int bbsAvailable;
 	
+	private String profileImage;
+	
 	public int getBbsId() {
 		return bbsId;
 	}
@@ -39,5 +41,10 @@ public class BbsDTO {
 	public void setBbsAvailable(int bbsAvailable) {
 		this.bbsAvailable = bbsAvailable;
 	}
-
+	public String getProfileImage() {
+		return profileImage;
+	}
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
 }

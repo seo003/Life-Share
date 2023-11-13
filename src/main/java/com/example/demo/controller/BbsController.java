@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.dto.BbsDTO;
 import com.example.demo.service.BbsService;
@@ -32,7 +34,7 @@ public class BbsController {
 	public String home(Model model) {
 		ArrayList<BbsDTO> bbsDTOList = new ArrayList<>();
 		bbsDTOList = bbsService.getBbsAll();
-		bbsDTOList = userService.getAllUserProfile(bbsDTOList);
+		bbsDTOList = userService.getAllUserProfileImage(bbsDTOList);
 		model.addAttribute("bbsDTOList", bbsDTOList);
 
 		return "home";
@@ -65,20 +67,22 @@ public class BbsController {
 	}
 
 	@PostMapping("/bbsWrite")
-	public String bbsWrite(BbsDTO bbsDTO, HttpSession session, Model model) {
+	public String bbsWrite(BbsDTO bbsDTO, HttpSession session, Model model, @RequestParam("file") List<MultipartFile> files) {
 		String userId = (String) session.getAttribute("loginId");
 		bbsDTO.setUserId(userId);
 		if (bbsDTO.getBbsContent() == "") {
 			model.addAttribute("msg", "bbsWriteEmpty");
 			return "alert";
 		}
-		int result = bbsService.bbsWrite(bbsDTO);
+		int result = bbsService.bbsWrite(bbsDTO, files);
 		if (result == 1) {
+			
 			model.addAttribute("msg", "bbsWriteY");
 		} else {
 			model.addAttribute("msg", "bbsWriteN");
 		}
 		return "alert";
+		
 	}
 
 	@GetMapping("/bbsOne")

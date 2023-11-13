@@ -6,9 +6,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.example.demo.mapper.BbsMapper">
 
 	<insert id="bbsWrite"
-		parameterType="com.example.demo.dto.BbsDTO">
-		INSERT INTO bbs(userId, bbsContent) values (#{userId},
-		#{bbsContent});
+		parameterType="com.example.demo.dto.BbsDTO"
+		useGeneratedKeys="true" keyProperty="bbsId">
+		INSERT INTO bbs (userId, bbsContent) values (#{userId}, #{bbsContent});
+	</insert>
+	
+	<insert id="fileUpload" parameterType="com.example.demo.dto.FileDTO">
+		INSERT INTO files values (#{bbsId}, #{originalFileName}, #{fileName});
 	</insert>
 
 	<select id="getMyBbsAll" parameterType="com.example.demo.dto.BbsDTO" resultType="com.example.demo.dto.BbsDTO">

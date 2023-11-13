@@ -7,11 +7,14 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.example.demo.dto.BbsDTO;
+import com.example.demo.dto.FileDTO;
 
 @Mapper
 public interface BbsMapper {
 
-	public int bbsWrite(BbsDTO bbsDTO);
+	public void bbsWrite(BbsDTO bbsDTO);
+
+	public void fileUpload(List<FileDTO> fileDTOList);
 
 	public ArrayList<BbsDTO> getMyBbsAll(String loginId);
 

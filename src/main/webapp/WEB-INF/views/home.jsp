@@ -42,20 +42,9 @@
 					%>
 					<div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
-							<%
-							if (bbsInfo.getProfileImage() == null) {
-							%>
-							<img class="imgRound" src="/profileImage/defaultProfile.png"><%=bbsInfo.getUserId()%>
-							<%
-							} else {
-							%>
 							<img class="imgRound" src="/profileImage/<%=bbsInfo.getProfileImage()%>"><%=bbsInfo.getUserId()%>
-							<%
-							}
-							%>
-							
-							<a class="one" href="/bbsOne?bbsId=<%=bbsInfo.getBbsId()%>"><img
-								class="favorites-board-image" src="#"></a>
+							<a class="one" href="/bbsOne?bbsId=<%=bbsInfo.getBbsId()%>">
+							<img class="favorites-board-image" src="#"></a>
 						</div>
 						<a class="one" href="/bbsOne?bbsId=<%=bbsInfo.getBbsId()%>">
 							<div class="title">

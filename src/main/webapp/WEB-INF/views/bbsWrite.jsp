@@ -13,12 +13,13 @@
 		<main>
 			<div class="content-layout">
 				<div class="favorites-boards-list">
-				
-					<form method="post" action="/bbsWrite">
+
+					<form method="post" action="/bbsWrite" enctype="multipart/form-data">
 						<div class="favorites-board-item">
 							<div class="favorites-board-thumbnails">
-								<img class="favorites-board-image" src="#">
-								<div class="favorites-board-new create-new create-text">이미지를 추가해주세요</div>
+								<div class="favorites-board-new create-new create-text">
+									이미지를 추가해주세요 <input multiple="multiple" type="file" name="file" class="profileFile">
+								</div>
 							</div>
 							<div class="title">
 								<table class="table">
@@ -39,7 +40,7 @@
 							</div>
 						</div>
 					</form>
-					
+
 				</div>
 			</div>
 		</main>

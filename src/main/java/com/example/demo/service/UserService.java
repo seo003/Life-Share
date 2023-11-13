@@ -14,14 +14,14 @@ import com.example.demo.dto.UserDTO;
 import com.example.demo.mapper.UserMapper;
 
 @Service
-public class UserService{
+public class UserService {
 	private final UserMapper userMapper;
-	
-	@Autowired // 생성자 주입 
-    public UserService(UserMapper userMapper) {
-        this.userMapper = userMapper;
-    }
-	
+
+	@Autowired // 생성자 주입
+	public UserService(UserMapper userMapper) {
+		this.userMapper = userMapper;
+	}
+
 	public String login(String userId) {
 		return userMapper.login(userId);
 	}
@@ -29,14 +29,15 @@ public class UserService{
 	public UserDTO userInfo(String userId) {
 		return userMapper.userInfo(userId);
 	}
-	
+
 	public Integer profileUpdate(MultipartFile uploadFile, UserDTO userDTO, String pwcheck) {
 		String userPw = userDTO.getUserPw();
 
 		if (userPw.equals(pwcheck)) {
 			try {
 				String fileName = null;
-				String defaultFilePath = "C:\\SWproject\\SWproject\\src\\main\\resources\\static\\profileImage\\"; // 파일 저장 경로
+				//파일 저장 경로
+				String defaultFilePath = "C:\\SWproject\\SWproject\\src\\main\\resources\\static\\profileImage\\"; 
 				String filePath = null;
 				if (!uploadFile.isEmpty()) {
 					String originFileName = uploadFile.getOriginalFilename(); // 원본 파일 이름 가져오기
@@ -47,16 +48,14 @@ public class UserService{
 //					System.out.println(filePath);
 					uploadFile.transferTo(new File(filePath));
 				}
+
 				Integer result;
-				System.out.println("fileName " + fileName);
+//				System.out.println(fileName);
 				if (fileName != null) { // 이미지 업로드했으면
 					userDTO.setUserFileName(fileName);
-					System.out.println(fileName);
-					result = userMapper.profileUpdateFile(userDTO);
-				} else {
-					// System.out.println(userDTO.toString());
-					result = userMapper.profileUpdate(userDTO);
 				}
+				result = userMapper.profileUpdate(userDTO);
+
 				return result;
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -66,29 +65,29 @@ public class UserService{
 			return -1;
 		}
 	}
-	
+
 	public int userDelete(String userId) {
 		return userMapper.userDelete(userId);
 	}
-	
-	public ArrayList<BbsDTO> getAllUserProfile(ArrayList<BbsDTO> bbsDTOList) {
-        // 각 BbsDTO에 userFileName 추가
-        for (BbsDTO bbsDTO : bbsDTOList) {
-            String userId = bbsDTO.getUserId();
-            String userFileName = userMapper.getUserFileName(userId);
-            if (userFileName == null) {
-            	userFileName = "defaultProfile.png";
-            }
-            bbsDTO.setProfileImage(userFileName);
-        }
+
+	public ArrayList<BbsDTO> getAllUserProfileImage(ArrayList<BbsDTO> bbsDTOList) {
+		// 각 BbsDTO에 userFileName 추가
+		for (BbsDTO bbsDTO : bbsDTOList) {
+			String userId = bbsDTO.getUserId();
+			String userFileName = userMapper.getUserFileName(userId);
+			if (userFileName == null) {
+				userFileName = "defaultProfile.png";
+			}
+			bbsDTO.setProfileImage(userFileName);
+		}
 		return bbsDTOList;
 	}
 
 	public String getUserFileName(String userId) {
 		String userFileName = userMapper.getUserFileName(userId);
-        if (userFileName == null) {
-        	userFileName = "defaultProfile.png";
-        }
+		if (userFileName == null) {
+			userFileName = "defaultProfile.png";
+		}
 		return userFileName;
 	}
 }

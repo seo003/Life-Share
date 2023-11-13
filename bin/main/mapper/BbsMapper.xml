@@ -6,17 +6,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.example.demo.mapper.BbsMapper">
 
 	<insert id="bbsWrite"
-		parameterType="com.example.demo.dto.BbsDTO"
-		useGeneratedKeys="true" keyProperty="bbsId">
-		INSERT INTO bbs (userId, bbsContent) values (#{userId}, #{bbsContent});
-	</insert>
-	
-	<insert id="fileUpload" parameterType="com.example.demo.dto.FileDTO">
-		INSERT INTO files values (#{bbsId}, #{originalFileName}, #{fileName});
+		parameterType="com.example.demo.dto.BbsDTO" useGeneratedKeys="true"
+		keyProperty="bbsId">
+		INSERT INTO bbs (userId, bbsContent) values (#{userId},
+		#{bbsContent});
 	</insert>
 
-	<select id="getMyBbsAll" parameterType="com.example.demo.dto.BbsDTO" resultType="com.example.demo.dto.BbsDTO">
-		SELECT * FROM bbs WHERE userId = #{userId} AND bbsAvailable=1;
+	<!--<insert id="fileUpload" parameterType="com.example.demo.dto.FileDTO"> 
+		INSERT INTO files values (#{bbsId}, #{originalFileName}, #{fileName}); </insert> -->
+		
+	<insert id="fileUpload" parameterType="java.util.List">
+		INSERT INTO files (bbsId, originalFileName, fileName) values
+		<foreach collection="list" item="file" separator=",">
+			(#{file.bbsId}, #{file.originalFileName}, #{file.fileName})
+		</foreach>
+	</insert>
+
+	<select id="getMyBbsAll"
+		parameterType="com.example.demo.dto.BbsDTO"
+		resultType="com.example.demo.dto.BbsDTO">
+		SELECT * FROM bbs WHERE userId = #{userId} AND
+		bbsAvailable=1;
 	</select>
 
 	<select id="getBbsAll"
@@ -30,23 +40,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM bbs WHERE bbsId = #{bbsId};
 	</select>
 
-	<update id="bbsOneUpdate" parameterType="com.example.demo.dto.UserDTO">
-		UPDATE bbs SET bbsContent=#{bbsContent} WHERE bbsId=#{bbsId};
+	<update id="bbsOneUpdate"
+		parameterType="com.example.demo.dto.UserDTO">
+		UPDATE bbs SET bbsContent=#{bbsContent} WHERE
+		bbsId=#{bbsId};
 	</update>
 
 	<update id="bbsDelete" parameterType="int">
-		UPDATE bbs SET bbsAvailable=0 WHERE bbsId=#{bbsId};
+		UPDATE bbs SET
+		bbsAvailable=0 WHERE bbsId=#{bbsId};
 	</update>
 
 	<update id="bbsRestore" parameterType="int">
-		UPDATE bbs SET bbsAvailable=1 WHERE bbsId=#{bbsId};
+		UPDATE bbs SET
+		bbsAvailable=1 WHERE bbsId=#{bbsId};
 	</update>
 
-	<select id="bbsDeleted" parameterType="com.example.demo.dto.BbsDTO" resultType="com.example.demo.dto.BbsDTO">
-		SELECT * FROM bbs WHERE userId = #{userId} AND bbsAvailable=0;
+	<select id="bbsDeleted"
+		parameterType="com.example.demo.dto.BbsDTO"
+		resultType="com.example.demo.dto.BbsDTO">
+		SELECT * FROM bbs WHERE userId = #{userId} AND
+		bbsAvailable=0;
 	</select>
-	
+
 	<delete id="bbsCompletedDelete" parameterType="int">
-		DELETE FROM bbs WHERE bbsId=#{bbsId};
+		DELETE FROM bbs
+		WHERE bbsId=#{bbsId};
 	</delete>
 </mapper>

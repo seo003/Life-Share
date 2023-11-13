@@ -34,8 +34,8 @@ public class BbsService {
 			String filePath = null;
 			String ext;
 			UUID uuid;
+
 			bbsMapper.bbsWrite(bbsDTO);
-			
 			int bbsId = bbsDTO.getBbsId();
 //			System.out.println(bbsId);
 
@@ -65,7 +65,7 @@ public class BbsService {
 			return 1; // 업로드 성공
 		} catch (Exception e) {
 			e.printStackTrace();
-			return 0; // 파일 업로드 오류
+			return 0; // 오류
 		}
 	}
 

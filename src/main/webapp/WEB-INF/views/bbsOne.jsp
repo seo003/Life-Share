@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="org.springframework.ui.Model"%>
 <%@page import="com.example.demo.dto.BbsDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -18,25 +19,31 @@
 
 					<div class="favorites-board-item">
 						<div class="title">
-							
+
 							<%
 							BbsDTO bbsOne = (BbsDTO) request.getAttribute("bbsOne");
-							int deleted = (int) request.getAttribute("deleted");%>
-							<img class="imgRound" src="/profileImage/<%=bbsOne.getProfileImage()%>"><%=bbsOne.getUserId() %>
+							int deleted = (int) request.getAttribute("deleted");
+							%>
+							<img class="imgRound"
+								src="image/profileImage/<%=bbsOne.getProfileImage()%>"><%=bbsOne.getUserId()%>
 							<%
 							if (loginId != null && loginId.equals(bbsOne.getUserId()) && deleted == 0) {//유저=게시글 쓴사람
 							%>
-							
-							<button type="button" class="button" onclick="bbsDelete('${bbsOne.bbsId}');">삭제</button>
-							<a href="/bbsOneUpdate?bbsId=${bbsOne.bbsId}"> <input type="submit" value="수정" class="button"></a>
+
+							<button type="button" class="button"
+								onclick="bbsDelete('${bbsOne.bbsId}');">삭제</button>
+							<a href="/bbsOneUpdate?bbsId=${bbsOne.bbsId}"> <input
+								type="submit" value="수정" class="button"></a>
 							<%
 							}
 
 							if (deleted == 1) {
 							%>
-							<button type="button" class="button" onclick="bbsCompletedDelete('${bbsOne.bbsId}');">영구삭제</button>
-							<button type="button" class="button" onclick="bbsRestore('${bbsOne.bbsId}');">복원</button>
-							
+							<button type="button" class="button"
+								onclick="bbsCompletedDelete('${bbsOne.bbsId}');">영구삭제</button>
+							<button type="button" class="button"
+								onclick="bbsRestore('${bbsOne.bbsId}');">복원</button>
+
 							<%
 							}
 							%>
@@ -46,7 +53,14 @@
 									<tr>
 										<td>
 											<div class="favorites-board-thumbnails">
-												<img class="favorites-board-image" src="#">
+												<%
+												ArrayList<String> fileNames = bbsOne.getBbsFiles();
+												for (String fileName : fileNames) {
+												%>
+												<img class="favorites-board-image" src="image/bbsFiles/<%=fileName%>">
+												<%
+												}
+												%>
 												<div class="favorites-board-new create-new create-text"></div>
 											</div>
 										</td>
@@ -84,13 +98,12 @@
 					location.href = "/bbsCompletedDelete?bbsId=${bbsOne.bbsId}";
 				}
 			}
-			
+
 			function bbsRestore(bbsId) {
 				if (window.confirm("정말로 복원하시겠습니까?")) {
 					location.href = "/bbsRestore?bbsId=${bbsOne.bbsId}";
 				}
 			}
-			
 		</script>
 		<%@include file="footer.jsp"%>
 </html>

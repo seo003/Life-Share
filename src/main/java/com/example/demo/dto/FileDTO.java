@@ -1,10 +1,19 @@
 package com.example.demo.dto;
 
 public class FileDTO {
+	private int fileId;
 	private int bbsId;
 	private String originalFileName;
 	private String fileName;
 
+	public int getfileId() {
+		return fileId;
+	}
+
+	public void setFileId(int fileId) {
+		this.fileId = fileId;
+	}
+	
 	public int getBbsId() {
 		return bbsId;
 	}
@@ -31,6 +40,6 @@ public class FileDTO {
 
 	@Override
 	public String toString() {
-		return "VALUE : " + bbsId + ", " + originalFileName + ", " + fileName + " = END =  ";
+		return "VALUE : " + fileId + ", "  + bbsId + ", " + originalFileName + ", " + fileName + " = END =  ";
 	}
 }

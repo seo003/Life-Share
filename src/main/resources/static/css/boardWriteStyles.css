@@ -26,6 +26,7 @@
 				background: white;
 				margin-bottom: 18px;
 				border: 1px solid silver;
+				display: flex;
 
 				/*img {
           width: 100%;
@@ -70,6 +71,7 @@
 				.favorites-board-image {
 					/*이미지크기*/
 					height: 400px;
+					width:400px;
 				}
 			}
 

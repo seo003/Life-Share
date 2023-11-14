@@ -90,9 +90,14 @@ public class BbsController {
 		BbsDTO bbsDTO = bbsService.getBbsOne(bbsId);
 		String userProfile = userService.getUserFileName(bbsDTO.getUserId());
 		bbsDTO.setProfileImage(userProfile);
+		
+		ArrayList<String> fileNames = new ArrayList<>();
+		fileNames = bbsService.getFiles(bbsDTO.getBbsId());
+		bbsDTO.setBbsFiles(fileNames);
+		
 		model.addAttribute("bbsOne", bbsDTO);
 		model.addAttribute("deleted", 0);
-
+		
 		return "bbsOne";
 	}
 

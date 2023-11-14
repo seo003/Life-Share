@@ -32,4 +32,6 @@ public interface BbsMapper {
 	public int bbsRestore(int bbsId);
 
 	public int bbsCompletedDelete(int bbsId);
+
+	public ArrayList<String> getFiles(int bbsId);
 }

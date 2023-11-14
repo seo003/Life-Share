@@ -12,9 +12,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{bbsContent});
 	</insert>
 
-	<!--<insert id="fileUpload" parameterType="com.example.demo.dto.FileDTO"> 
-		INSERT INTO files values (#{bbsId}, #{originalFileName}, #{fileName}); </insert> -->
-		
 	<insert id="fileUpload" parameterType="java.util.List">
 		INSERT INTO files (bbsId, originalFileName, fileName) values
 		<foreach collection="list" item="file" separator=",">
@@ -67,4 +64,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		DELETE FROM bbs
 		WHERE bbsId=#{bbsId};
 	</delete>
+
+	<select id="getFiles" parameterType="int" resultType="String">
+		SELECT fileName FROM files 
+		WHERE bbsId = #{bbsId};
+	</select>
 </mapper>

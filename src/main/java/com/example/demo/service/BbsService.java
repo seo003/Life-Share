@@ -28,12 +28,10 @@ public class BbsService {
 		try {
 			List<FileDTO> fileDTOList = new ArrayList<>();
 			
-			String defaultFilePath = "C:\\SWproject\\SWproject\\src\\main\\resources\\static\\bbsFiles\\";
-			String originFileName = null;
-			String fileName = null;
-			String filePath = null;
-			String ext;
+			String defaultFilePath = "C:\\SWproject\\SWproject\\src\\main\\resources\\static\\image\\bbsFiles\\";
+			String originFileName, fileName, filePath, ext;
 			UUID uuid;
+			
 
 			bbsMapper.bbsWrite(bbsDTO);
 			int bbsId = bbsDTO.getBbsId();
@@ -101,5 +99,11 @@ public class BbsService {
 		return bbsMapper.bbsCompletedDelete(bbsId);
 
 	}
+
+	public ArrayList<String> getFiles(int bbsId) {
+		return bbsMapper.getFiles(bbsId);
+	}
+
+	
 
 }

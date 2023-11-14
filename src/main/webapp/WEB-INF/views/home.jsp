@@ -42,7 +42,7 @@
 					%>
 					<div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
-							<img class="imgRound" src="/profileImage/<%=bbsInfo.getProfileImage()%>"><%=bbsInfo.getUserId()%>
+							<img class="imgRound" src="image/profileImage/<%=bbsInfo.getProfileImage()%>"><%=bbsInfo.getUserId()%>
 							<a class="one" href="/bbsOne?bbsId=<%=bbsInfo.getBbsId()%>">
 							<img class="favorites-board-image" src="#"></a>
 						</div>

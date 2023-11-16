@@ -30,39 +30,35 @@ public class UserService {
 		return userMapper.userInfo(userId);
 	}
 
-	public Integer profileUpdate(MultipartFile uploadFile, UserDTO userDTO, String pwcheck) {
+	public Integer profileUpdate(MultipartFile uploadFile, UserDTO userDTO) {
 		String userPw = userDTO.getUserPw();
 
-		if (userPw.equals(pwcheck)) {
-			try {
-				String fileName = null;
-				//파일 저장 경로
-				String defaultFilePath = "C:\\SWproject\\SWproject\\src\\main\\resources\\static\\image\\profileImage\\"; 
-				String filePath = null;
-				if (!uploadFile.isEmpty()) {
-					String originFileName = uploadFile.getOriginalFilename(); // 원본 파일 이름 가져오기
-					String ext = FilenameUtils.getExtension(originFileName); // 파일 확장자
-					UUID uuid = UUID.randomUUID(); // 파일 이름 중복되지않게 하기 위한 uuid
-					fileName = uuid + "." + ext;
-					filePath = defaultFilePath + fileName;
+		try {
+			String fileName = null;
+			// 파일 저장 경로
+			String defaultFilePath = "C:\\2023\\SWproject\\SWproject\\src\\main\\resources\\static\\image\\profileImage\\";
+			String filePath = null;
+			if (!uploadFile.isEmpty()) {
+				String originFileName = uploadFile.getOriginalFilename(); // 원본 파일 이름 가져오기
+				String ext = FilenameUtils.getExtension(originFileName); // 파일 확장자
+				UUID uuid = UUID.randomUUID(); // 파일 이름 중복되지않게 하기 위한 uuid
+				fileName = uuid + "." + ext;
+				filePath = defaultFilePath + fileName;
 //					System.out.println(filePath);
-					uploadFile.transferTo(new File(filePath));
-				}
-
-				Integer result;
-//				System.out.println(fileName);
-				if (fileName != null) { // 이미지 업로드했으면
-					userDTO.setUserFileName(fileName);
-				}
-				result = userMapper.profileUpdate(userDTO);
-
-				return result;
-			} catch (Exception e) {
-				e.printStackTrace();
-				return 0;
+				uploadFile.transferTo(new File(filePath));
 			}
-		} else { // 비밀번호 다름
-			return -1;
+
+			Integer result;
+//				System.out.println(fileName);
+			if (fileName != null) { // 이미지 업로드했으면
+				userDTO.setUserFileName(fileName);
+			}
+			result = userMapper.profileUpdate(userDTO);
+
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
 		}
 	}
 

@@ -86,9 +86,8 @@ public class UserController {
 	}
 
 	@PostMapping("/profileUpdate")
-	public String profileUpdate(@RequestParam("file") MultipartFile uploadFile, UserDTO userDTO, Model model,
-			String pwcheck) {
-		Integer result = userService.profileUpdate(uploadFile, userDTO, pwcheck);
+	public String profileUpdate(@RequestParam("file") MultipartFile uploadFile, UserDTO userDTO, Model model) {
+		Integer result = userService.profileUpdate(uploadFile, userDTO);
 		if (result > 0) {
             model.addAttribute("msg", "pUpdateY");
             return "alert";

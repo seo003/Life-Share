@@ -9,6 +9,28 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="css/profileStyles.css" rel="stylesheet" />
+<script>
+	function validation() {
+		var userName = document.forms["profileUpdate"]["userName"].value;
+		var userPw = document.forms["profileUpdate"]["userPw"].value;
+		var pwcheck = document.forms["profileUpdate"]["pwcheck"].value;
+		var userPhone = document.forms["profileUpdate"]["userPhone"].value;
+		var userEmail = document.forms["profileUpdate"]["userEmail"].value;
+
+		if (!userName.trim() || !userPw.trim() || !pwcheck.trim()
+				|| !userPhone.trim() || !userEmail.trim()) {
+			alert("빈 칸이 있습니다.");
+			return false;
+		}
+
+		if (userPw !== pwcheck) {
+			alert("비밀번호가 일치하지 않습니다.");
+			return false;
+		}
+
+		return true;
+	}
+</script>
 </head>
 <div id="layoutSidenav">
 	<div id="layoutSidenav_content">
@@ -19,10 +41,12 @@
 			<!-- Main -->
 			<div class="main">
 				<h2>PROFILE</h2>
-				<form action="/profileUpdate" method="post" name="profileUpdate" enctype="multipart/form-data">
+				<form action="/profileUpdate" method="post" name="profileUpdate"
+					enctype="multipart/form-data" onsubmit="return validation()">
 					<div class="card">
 						<div class="card-image">
-							프로필 이미지를 선택해주세요.<input type="file" name="file" class="profileFile">	
+							프로필 이미지를 선택해주세요.<input type="file" name="file"
+								class="profileFile">
 						</div>
 						<div class="card-body">
 							<table>

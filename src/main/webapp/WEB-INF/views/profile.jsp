@@ -25,11 +25,11 @@
 						<%
 						if (info.getUserFileName() == null) {
 						%>
-						<img class="profileImage" src="/profileImage/defaultProfile.png">
+						<img class="profileImage" src="image//profileImage/defaultProfile.png">
 						<%
 						} else {
 						%>
-						<img class="profileImage" src="/profileImage/<%=info.getUserFileName()%>">
+						<img class="profileImage" src="image/profileImage/<%=info.getUserFileName()%>">
 						<%
 						}
 						%>

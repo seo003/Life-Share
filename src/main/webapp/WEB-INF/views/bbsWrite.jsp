@@ -11,17 +11,16 @@
 	function validation(){
 		var bbsContent = document.getElementById("bbsContent").value;
         var inputFile = document.getElementById("file");
-
+        
         if (bbsContent.trim() === "") {
             alert("내용을 입력해주세요.");
             return false;
         }
 
-        if (!inputFile.value) {
+        if (inputFile == null) {
             alert("이미지를 선택해주세요.");
             return false;
         }
-
         return true;
 	}
 </script>

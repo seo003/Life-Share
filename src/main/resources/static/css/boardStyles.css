@@ -74,6 +74,7 @@
 				.favorites-board-image {
 					/*이미지크기*/
 					height: 400px;
+					width:400px;
 					border-radius: 2%;
 
 				}

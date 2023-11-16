@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO files (bbsId, originalFileName, fileName) values
 		<foreach collection="list" item="file" separator=",">
 			(#{file.bbsId}, #{file.originalFileName}, #{file.fileName})
-		</foreach>
+		</foreach>	
 	</insert>
 
 	<select id="getMyBbsAll"
@@ -65,8 +65,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE bbsId=#{bbsId};
 	</delete>
 
-	<select id="getFiles" parameterType="int" resultType="String">
-		SELECT fileName FROM files 
-		WHERE bbsId = #{bbsId};
-	</select>
 </mapper>

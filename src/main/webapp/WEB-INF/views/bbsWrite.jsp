@@ -7,6 +7,24 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="css/boardWriteStyles.css" rel="stylesheet" />
+<script>
+	function validation(){
+		var bbsContent = document.getElementById("bbsContent").value;
+        var inputFile = document.getElementById("file");
+
+        if (bbsContent.trim() === "") {
+            alert("내용을 입력해주세요.");
+            return false;
+        }
+
+        if (!inputFile.value) {
+            alert("이미지를 선택해주세요.");
+            return false;
+        }
+
+        return true;
+	}
+</script>
 </head>
 <div id="layoutSidenav">
 	<div id="layoutSidenav_content">
@@ -14,7 +32,7 @@
 			<div class="content-layout">
 				<div class="favorites-boards-list">
 
-					<form method="post" action="/bbsWrite" enctype="multipart/form-data">
+					<form method="post" action="/bbsWrite" enctype="multipart/form-data" onsubmit="return validation()">
 						<div class="favorites-board-item">
 							<div class="favorites-board-thumbnails">
 								<div class="favorites-board-new create-new create-text">

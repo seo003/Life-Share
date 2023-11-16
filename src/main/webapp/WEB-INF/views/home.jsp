@@ -19,7 +19,7 @@
 			<div class="content-layout">
 				<div class="favorites-boards-list">
 
-					<div class="favorites-board-item">
+					<!-- <div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
 							<img class="imgRound" src="qk.jpg">quokka <a class="one"
 								href="/bbsOne"><img class="favorites-board-image"
@@ -32,7 +32,7 @@
 								<div class="favorites-board-title">쿼카귀여워</div>
 							</div>
 						</a>
-					</div>
+					</div> -->
 
 					<%
 					ArrayList<BbsDTO> bbsDTOList = (ArrayList) request.getAttribute("bbsDTOList");
@@ -44,7 +44,15 @@
 						<div class="favorites-board-thumbnails">
 							<img class="imgRound" src="image/profileImage/<%=bbsInfo.getProfileImage()%>"><%=bbsInfo.getUserId()%>
 							<a class="one" href="/bbsOne?bbsId=<%=bbsInfo.getBbsId()%>">
-							<img class="favorites-board-image" src="#"></a>
+							<%
+							if (bbsInfo.getBbsFiles().size() != 0) {
+								String firstFileName = bbsInfo.getBbsFiles().get(0);
+							%>
+							<img class="favorites-board-image" src="image/bbsFiles/<%=firstFileName%>"></a>
+							<%
+							} else {%>
+							<img class="favorites-board-image" src="image/bbsFiles/defaultImage.png"></a>
+							<% } %>
 						</div>
 						<a class="one" href="/bbsOne?bbsId=<%=bbsInfo.getBbsId()%>">
 							<div class="title">

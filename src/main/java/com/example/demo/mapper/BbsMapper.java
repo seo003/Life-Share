@@ -33,5 +33,4 @@ public interface BbsMapper {
 
 	public int bbsCompletedDelete(int bbsId);
 
-	public ArrayList<String> getFiles(int bbsId);
 }

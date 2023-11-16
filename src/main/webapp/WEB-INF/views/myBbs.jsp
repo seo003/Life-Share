@@ -40,7 +40,16 @@
 					%>
 					<div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
-							<a class="one" href="/bbsOne?bbsId=<%=bbsInfo.getBbsId()%>"><img class="favorites-board-image" src="#"> </a>
+							<a class="one" href="/bbsOne?bbsId=<%=bbsInfo.getBbsId()%>">
+							<%
+							if (bbsInfo.getBbsFiles().size() != 0) {
+								String firstFileName = bbsInfo.getBbsFiles().get(0);
+							%>
+							<img class="favorites-board-image" src="image/bbsFiles/<%=firstFileName%>"></a>
+							<%
+							} else {%>
+							<img class="favorites-board-image" src="image/bbsFiles/defaultImage.png"></a>
+							<% } %>
 						</div>
 						<a class="one" href="/bbsOne?bbsId=<%=bbsInfo.getBbsId()%>">
 						<div class="title">

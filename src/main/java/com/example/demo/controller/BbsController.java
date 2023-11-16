@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.dto.BbsDTO;
 import com.example.demo.service.BbsService;
+import com.example.demo.service.FileService;
 import com.example.demo.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
@@ -23,11 +24,13 @@ public class BbsController {
 	// 생성자 주입
 	private final BbsService bbsService;
 	private final UserService userService;
+	private final FileService fileService;
 
 	@Autowired
-	public BbsController(BbsService bbsService, UserService userService) {
+	public BbsController(BbsService bbsService, UserService userService, FileService fileService) {
 		this.bbsService = bbsService;
 		this.userService = userService;
+		this.fileService = fileService;
 	}
 
 	@GetMapping("/")
@@ -35,6 +38,9 @@ public class BbsController {
 		ArrayList<BbsDTO> bbsDTOList = new ArrayList<>();
 		bbsDTOList = bbsService.getBbsAll();
 		bbsDTOList = userService.getAllUserProfileImage(bbsDTOList);
+		
+		bbsDTOList = fileService.getAllBbsFile(bbsDTOList);
+		
 		model.addAttribute("bbsDTOList", bbsDTOList);
 
 		return "home";
@@ -50,6 +56,7 @@ public class BbsController {
 		}
 
 		ArrayList<BbsDTO> bbsDTOList = bbsService.getMyBbsAll(loginId);
+		bbsDTOList = fileService.getAllBbsFile(bbsDTOList);
 		model.addAttribute("bbsDTOList", bbsDTOList);
 
 		return "myBbs";
@@ -92,9 +99,9 @@ public class BbsController {
 		bbsDTO.setProfileImage(userProfile);
 		
 		ArrayList<String> fileNames = new ArrayList<>();
-		fileNames = bbsService.getFiles(bbsDTO.getBbsId());
+		fileNames = fileService.getFiles(bbsDTO.getBbsId());
 		bbsDTO.setBbsFiles(fileNames);
-		
+
 		model.addAttribute("bbsOne", bbsDTO);
 		model.addAttribute("deleted", 0);
 		
@@ -143,6 +150,7 @@ public class BbsController {
 			model.addAttribute("msg", "deletedNothing");
 			return "alert";
 		} else {
+			bbsDeletedList = fileService.getAllBbsFile(bbsDeletedList);
 			model.addAttribute("bbsDeletedList", bbsDeletedList);
 			return "bbsDeleted";
 		}
@@ -151,6 +159,13 @@ public class BbsController {
 	@GetMapping("/bbsDeletedOne")
 	public String bbsDeletedOne(int bbsId, Model model) {
 		BbsDTO bbsDTO = bbsService.getBbsOne(bbsId);
+		String userProfile = userService.getUserFileName(bbsDTO.getUserId());
+		bbsDTO.setProfileImage(userProfile);
+		
+		ArrayList<String> fileNames = new ArrayList<>();
+		fileNames = fileService.getFiles(bbsDTO.getBbsId());
+		bbsDTO.setBbsFiles(fileNames);
+		
 		model.addAttribute("bbsOne", bbsDTO);
 		model.addAttribute("deleted", 1);
 

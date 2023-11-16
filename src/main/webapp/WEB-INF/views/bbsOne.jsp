@@ -55,13 +55,19 @@
 											<div class="favorites-board-thumbnails">
 												<%
 												ArrayList<String> fileNames = bbsOne.getBbsFiles();
+												if (fileNames==null) {
+													%>
+												<img class="favorites-board-image" src="image/bbsFiles/defaultImage">
+													<%
+												} else {
 												for (String fileName : fileNames) {
 												%>
 												<img class="favorites-board-image" src="image/bbsFiles/<%=fileName%>">
 												<%
-												}
+												} }
 												%>
 												<div class="favorites-board-new create-new create-text"></div>
+												
 											</div>
 										</td>
 									</tr>

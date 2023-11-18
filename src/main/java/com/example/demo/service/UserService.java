@@ -31,7 +31,6 @@ public class UserService {
 	}
 
 	public Integer profileUpdate(MultipartFile uploadFile, UserDTO userDTO) {
-		String userPw = userDTO.getUserPw();
 
 		try {
 			String fileName = null;
@@ -53,6 +52,7 @@ public class UserService {
 			if (fileName != null) { // 이미지 업로드했으면
 				userDTO.setUserFileName(fileName);
 			}
+
 			result = userMapper.profileUpdate(userDTO);
 
 			return result;

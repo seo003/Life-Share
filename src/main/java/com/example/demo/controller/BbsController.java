@@ -111,6 +111,11 @@ public class BbsController {
 	@GetMapping("/bbsOneUpdate")
 	public String bbsOneUpdate(int bbsId, Model model) {
 		BbsDTO bbsDTO = bbsService.getBbsOne(bbsId);
+		
+		ArrayList<String> fileNames = new ArrayList<>();
+		fileNames = fileService.getFiles(bbsDTO.getBbsId());
+		bbsDTO.setBbsFiles(fileNames);
+		
 		model.addAttribute("bbsOne", bbsDTO);
 		return "bbsOneUpdate";
 	}

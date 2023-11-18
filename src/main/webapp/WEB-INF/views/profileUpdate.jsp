@@ -30,6 +30,18 @@
 
 		return true;
 	}
+	
+	function readURL(input) {
+		  if (input.files && input.files[0]) {
+		    var reader = new FileReader();
+		    reader.onload = function(e) {
+		      document.getElementById('preview').src = e.target.result;
+		    };
+		    reader.readAsDataURL(input.files[0]);
+		  } else {
+		    document.getElementById('preview').src = "";
+		  }
+		}
 </script>
 </head>
 <div id="layoutSidenav">
@@ -45,8 +57,17 @@
 					enctype="multipart/form-data" onsubmit="return validation()">
 					<div class="card">
 						<div class="card-image">
-							프로필 이미지를 선택해주세요.<input type="file" name="file"
-								class="profileFile">
+							<%
+							String profileImage = info.getUserFileName();
+							if (profileImage == null) {
+							%>
+							<img class="profileImage" id="preview" src="image/profileImage/defaultProfile.png"/>
+							<% } else { %>
+							<img class="profileImage" id="preview" src="<%= "image/profileImage/" + info.getUserFileName() %>"/>
+							<% } %>
+							프로필 이미지를 선택해주세요. 
+							<!-- <img class="profileImage" src="image//profileImage/defaultProfile.png"> -->
+							<input type="file" name="file" class="profileFile" onchange="readURL(this);"> 
 						</div>
 						<div class="card-body">
 							<table>

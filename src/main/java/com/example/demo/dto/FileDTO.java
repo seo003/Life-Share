@@ -5,6 +5,11 @@ public class FileDTO {
 	private int bbsId;
 	private String originalFileName;
 	private String fileName;
+	private int fileAvailable;
+
+	public int getFileId() {
+		return fileId;
+	}
 
 	public int getfileId() {
 		return fileId;
@@ -36,6 +41,14 @@ public class FileDTO {
 
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+	}
+
+	public int getFileAvailable() {
+		return fileAvailable;
+	}
+
+	public void setFileAvailable(int fileAvailable) {
+		this.fileAvailable = fileAvailable;
 	}
 
 	@Override

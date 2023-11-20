@@ -23,6 +23,7 @@
         }
         return true;
 	}
+	
 </script>
 </head>
 <div id="layoutSidenav">
@@ -35,7 +36,7 @@
 						<div class="favorites-board-item">
 							<div class="favorites-board-thumbnails">
 								<div class="favorites-board-new create-new create-text">
-									이미지를 추가해주세요 <input multiple="multiple" type="file" name="file" class="profileFile">
+									이미지를 추가해주세요 <input multiple="multiple" type="file" name="file" class="profileFile" onchange="imageChange(this);">
 								</div>
 							</div>
 							<div class="title">

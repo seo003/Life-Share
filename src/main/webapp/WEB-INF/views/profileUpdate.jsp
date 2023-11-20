@@ -31,16 +31,14 @@
 		return true;
 	}
 	
-	function readURL(input) {
-		  if (input.files && input.files[0]) {
+	function changeImg(input) {
+		  if (input.files) {
 		    var reader = new FileReader();
 		    reader.onload = function(e) {
 		      document.getElementById('preview').src = e.target.result;
 		    };
 		    reader.readAsDataURL(input.files[0]);
-		  } else {
-		    document.getElementById('preview').src = "";
-		  }
+		  } 
 		}
 </script>
 </head>
@@ -67,7 +65,7 @@
 							<% } %>
 							프로필 이미지를 선택해주세요. 
 							<!-- <img class="profileImage" src="image//profileImage/defaultProfile.png"> -->
-							<input type="file" name="file" class="profileFile" onchange="readURL(this);"> 
+							<input type="file" name="file" class="profileFile" onchange="changeImg(this);"> 
 						</div>
 						<div class="card-body">
 							<table>

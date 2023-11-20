@@ -15,4 +15,6 @@ public interface UserMapper {
 	public int userDelete(String userId);
 	// 삭제 성공한 행 개수 반환
 	public String getUserFileName(String userId);
+
+	public Integer profileUpdateNoFile(UserDTO userDTO);
 }

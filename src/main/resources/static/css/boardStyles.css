@@ -74,7 +74,7 @@
 				.favorites-board-image {
 					/*이미지크기*/
 					height: 400px;
-					width:400px;
+					width: 400px;
 					border-radius: 2%;
 
 				}
@@ -206,8 +206,41 @@
 			margin-bottom: 10px;
 		}
 
+		.imgRound:hover {
+			border: 2px solid white;
+		}
+
 		.one:hover {
 			color: rgba(5, 159, 255, 1);
+		}
+
+		.friend {
+			text-decoration: none;
+		}
+
+		.friend:hover {
+			color: rgba(5, 159, 255, 1);
+		}
+
+		.modal-background {
+			display: none;
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.5);
+			justify-content: center;
+			align-items: center;
+		}
+
+		/* 모달 창 */
+		.modal-content {
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 10px;
+			max-width: 500px;
+			margin: auto;
 		}
 	}
 }

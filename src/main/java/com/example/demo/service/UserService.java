@@ -51,9 +51,11 @@ public class UserService {
 //				System.out.println(fileName);
 			if (fileName != null) { // 이미지 업로드했으면
 				userDTO.setUserFileName(fileName);
+				result = userMapper.profileUpdate(userDTO);
+			} else {
+				result= userMapper.profileUpdateNoFile(userDTO);
 			}
 
-			result = userMapper.profileUpdate(userDTO);
 
 			return result;
 		} catch (Exception e) {

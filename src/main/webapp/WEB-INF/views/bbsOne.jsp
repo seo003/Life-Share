@@ -55,9 +55,9 @@
 											<div class="favorites-board-thumbnails">
 												<%
 												ArrayList<String> fileNames = bbsOne.getBbsFiles();
-												if (fileNames==null) {
+												if (fileNames.isEmpty()) {
 													%>
-												<img class="favorites-board-image" src="image/bbsFiles/defaultImage">
+												<img class="favorites-board-image" src="image/bbsFiles/defaultImage.png">
 													<%
 												} else {
 												for (String fileName : fileNames) {

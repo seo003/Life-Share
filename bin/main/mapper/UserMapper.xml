@@ -20,6 +20,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE userId = #{userId};
 	</update>
 	
+	<update id="profileUpdateNoFile" parameterType="com.example.demo.dto.UserDTO">
+		UPDATE users SET userName = #{userName}, userPw = #{userPw}, userPhone = #{userPhone}, 
+		userEmail = #{userEmail}, userGender = #{userGender}, userBirth = #{userBirth}
+		WHERE userId = #{userId};
+	</update>
+	
 	<delete id="userDelete" parameterType="com.example.demo.dto.UserDTO" >
 		DELETE FROM users WHERE userId = #{userId};
 	</delete>

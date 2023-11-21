@@ -36,6 +36,7 @@ public class BbsController {
 	@GetMapping("/")
 	public String home(Model model) {
 		ArrayList<BbsDTO> bbsDTOList = new ArrayList<>();
+		
 		bbsDTOList = bbsService.getBbsAll();
 		bbsDTOList = userService.getAllUserProfileImage(bbsDTOList);
 		

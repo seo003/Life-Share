@@ -12,7 +12,7 @@
 <link href="css/modal.css" rel="stylesheet" />
 <script>
 	function openModal(userId) {
-		var modalId = "modal_" + userId; 
+		var modalId = "modal_" + userId;
 		var modal = document.getElementById(modalId);
 		modal.style.display = "flex";
 
@@ -22,6 +22,23 @@
 		var modalId = "modal_" + userId;
 		var modal = document.getElementById(modalId);
 		modal.style.display = "none";
+	}
+	function followUser(toUserId) {
+		$.ajax({
+			type : "POST",
+			url : "/follow",
+			data : {
+				toUserId : toUserId
+			},
+			success : function(response) {
+				// 팔로우가 성공적으로 처리되었을 때 실행할 코드
+				console.log("팔로우가 성공적으로 처리되었습니다.");
+			},
+			error : function(xhr, status, error) {
+				// 팔로우 처리 중에 에러가 발생했을 때 실행할 코드
+				console.error("에러가 발생했습니다:", error);
+			}
+		});
 	}
 </script>
 </head>
@@ -40,8 +57,8 @@
 					<div class="favorites-board-item">
 						<div class="favorites-board-thumbnails">
 							<a class="friend" href="javascript:void(0)"
-								onclick="return openModal('<%=bbsInfo.getUserId()%>')">
-								<img class="imgRound"
+								onclick="return openModal('<%=bbsInfo.getUserId()%>')"> <img
+								class="imgRound"
 								src="image/profileImage/<%=bbsInfo.getProfileImage()%>"> <%=bbsInfo.getUserId()%>
 							</a>
 
@@ -57,8 +74,10 @@
 												<%=bbsInfo.getUserId()%>
 											</h2>
 											<br>
-											<button type="button" class="button">팔로우</button>
-											<button type="button" class="button">팔로잉</button>
+											<button type="button" class="button"
+												onclick="followUser('<%=bbsInfo.getUserId()%>')">팔로우</button>
+
+											<!-- <button type="button" class="button">팔로잉</button> -->
 
 										</div>
 									</div>
@@ -69,13 +88,14 @@
 								<%
 								if (bbsInfo.getBbsFiles().size() != 0) {
 									String firstFileName = bbsInfo.getBbsFiles().get(0);
-								%> 
-								<img class="favorites-board-image"
-								src="image/bbsFiles/<%=firstFileName%>"> 
-								<% } else { %> 
-								<img class="favorites-board-image"
-								src="image/bbsFiles/defaultImage.png"> 
-								<% } %>
+								%> <img class="favorites-board-image"
+								src="image/bbsFiles/<%=firstFileName%>"> <%
+ } else {
+ %> <img
+								class="favorites-board-image"
+								src="image/bbsFiles/defaultImage.png"> <%
+ }
+ %>
 							</a>
 						</div>
 						<a class="one" href="/bbsOne?bbsId=<%=bbsInfo.getBbsId()%>">

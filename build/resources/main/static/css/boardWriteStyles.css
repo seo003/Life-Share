@@ -1,0 +1,241 @@
+.content-layout {
+
+	width: auto;
+	margin: auto;
+
+	.favorites-boards-list {
+		float: left;
+		position: relative;
+
+		/* border: 1px solid silver; */
+		.favorites-board-item {
+			width: 300px;
+			margin-bottom: 150px;
+			margin-top: 50px;
+			margin-right: 75px;
+			margin-left: 75px;
+			height: 300px;
+			float: left;
+			display: flex;
+
+			.favorites-board-thumbnails {
+				height: 400px;
+				width: 400px;
+				clear: Both;
+				float: left;
+				background: white;
+				margin-bottom: 18px;
+				border: 1px solid silver;
+				display: flex;
+
+				/*img {
+          width: 100%;
+        }*/
+				.design-board-icons {
+					width: 310px;
+					background: #fff;
+					margin-top: 33px;
+					height: 47px;
+					opacity: 0.8;
+					text-align: center;
+					padding-top: 30px;
+					/*img {
+            width: 8%;
+            margin: 0px 15px;
+          }*/
+				}
+
+				.design-board {
+					display: none;
+					width: 400px;
+					height: 400px;
+					background: rgba(0, 0, 0, 0.1);
+					position: absolute;
+					top: 9px;
+					float: left;
+					z-index: 9999;
+					margin-top: 50px;
+
+					.design-board-text {
+						width: 150px;
+						text-align: center;
+						margin: auto;
+						padding: 10px;
+						background: #303030;
+						color: #fff;
+						margin-top: 25%;
+						opacity: 1;
+					}
+				}
+
+				.favorites-board-image {
+					/*이미지크기*/
+					height: 400px;
+					width:400px;
+				}
+			}
+
+			.favorites-board-thumbnails:hover {
+				.design-board {
+					display: block;
+				}
+			}
+
+			.favorites-board-title {
+				/*Font-weight: bold;*/
+				float: left;
+				width: 350px;
+				margin-left: 75px;
+				margin-top: 75px;
+			}
+
+			.favorites-board-heart {
+				width: 50px;
+				color: rgba(5, 159, 255, 1);
+				float: right;
+				text-align: right;
+			}
+		}
+
+		.favorites-board-new {
+			width: 300px;
+			height: 300px;
+			margin-bottom: 150px;
+			margin-top: 50px;
+			margin-right: 75px;
+			margin-left: 75px;
+			float: left;
+
+			.create-new {
+				height: 400px;
+				width: 400px;
+				clear: Both;
+				float: left;
+				background: #E9EAEC;
+				margin-bottom: 18px;
+				border: 1px dashed silver;
+
+				.icon-plus {
+					width: 35px;
+					font-size: 4em;
+					color: #5D5D5F;
+					margin: auto;
+					margin-top: 110px;
+
+				}
+
+				.create-text {
+					width: 120px;
+					margin: auto;
+					float: center;
+				}
+			}
+
+			.favorites-board-title {
+				Font-weight: bold;
+				float: left;
+				width: 90%;
+				margin-left: 10px;
+				/* 마진 값을 조절하여 원하는 간격을 설정하세요 */
+				margin-top: 75px;
+			}
+
+			.favorites-board-heart {
+				width: 10%;
+				float: left;
+				text-align: right;
+			}
+
+		}
+
+		.content {
+			width: 400px;
+		}
+
+		.date {
+			width: 350px;
+			float: left;
+		}
+
+		.hear {
+			float: left;
+		}
+
+		.td {
+			height: 100px;
+		}
+
+
+		.float {
+			position: fixed;
+			width: 70px;
+			height: 70px;
+			bottom: 40px;
+			right: 40px;
+			background-color: rgba(184, 228, 255, 1);
+			color: rgba(5, 159, 255, 1);
+			border-radius: 50px;
+			text-align: center;
+			box-shadow: 2px 2px 3px #999;
+
+		}
+
+
+		.fa-pen {
+			margin-top: 25px;
+			font-size: 20px;
+		}
+
+		.float:hover {
+			color: rgba(184, 228, 255, 1);
+			background-color: rgba(5, 159, 255, 1);
+		}
+
+		.txtAreaDiv {
+			width: 1000px;
+			margin-left: 75px;
+		}
+
+		.coment {
+			float: right;
+			margin-top: 51px;
+			margin-left: 75px;
+
+		}
+
+		.table {
+			margin-left: 75px;
+		}
+
+		.showtable {
+			width: 400px;
+		}
+
+		.button {
+			background-color: white;
+			height: 24px;
+			font-size: 15px;
+			border: 1px;
+			border-radius: 8px;
+			box-shadow: 1px 1px 8px 0 grey;
+			margin-bottom:10px;
+			margin-left:7px;
+			float:right;
+		
+		}
+
+		.button:hover {
+			background-color: rgba(184, 228, 255, 1);
+			border: 1px;
+		}
+		
+
+	}
+	.imgRound {
+			border-radius: 50%;
+			width: 50px;
+			height: 50px;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+}

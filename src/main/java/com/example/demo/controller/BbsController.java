@@ -3,11 +3,11 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.demo.service.FollowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,12 +25,14 @@ public class BbsController {
 	private final BbsService bbsService;
 	private final UserService userService;
 	private final FileService fileService;
+	private final FollowService followService;
 
 	@Autowired
-	public BbsController(BbsService bbsService, UserService userService, FileService fileService) {
+	public BbsController(BbsService bbsService, UserService userService, FileService fileService, FollowService followService) {
 		this.bbsService = bbsService;
 		this.userService = userService;
 		this.fileService = fileService;
+		this.followService = followService;
 	}
 
 	@GetMapping("/")
@@ -39,7 +41,9 @@ public class BbsController {
 		
 		bbsDTOList = bbsService.getBbsAll();
 		bbsDTOList = userService.getAllUserProfileImage(bbsDTOList);
-		
+		for (BbsDTO bbsDTO : bbsDTOList) {
+			bbsDTO = followService.followCount(bbsDTO);
+		}
 		bbsDTOList = fileService.getAllBbsFile(bbsDTOList);
 		
 		model.addAttribute("bbsDTOList", bbsDTOList);

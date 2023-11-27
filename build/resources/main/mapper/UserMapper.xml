@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace에 dao(mapper.java) -->
+<mapper namespace="com.example.demo.mapper.UserMapper">
+	<!-- 로그인 -->
+	<select id="login" parameterType="String" resultType="String">
+		SELECT
+		userPw FROM users WHERE userId = #{userId};
+	</select>
+
+	<select id="userInfo" parameterType="java.lang.String" resultType="com.example.demo.dto.UserDTO">
+		SELECT * FROM users WHERE userId = #{userId};
+	</select>
+	
+	<update id="profileUpdate" parameterType="com.example.demo.dto.UserDTO">
+		UPDATE users SET userName = #{userName}, userPw = #{userPw}, userPhone = #{userPhone}, 
+		userEmail = #{userEmail}, userGender = #{userGender}, userBirth = #{userBirth}, userFileName = #{userFileName}
+		WHERE userId = #{userId};
+	</update>
+	
+	<update id="profileUpdateNoFile" parameterType="com.example.demo.dto.UserDTO">
+		UPDATE users SET userName = #{userName}, userPw = #{userPw}, userPhone = #{userPhone}, 
+		userEmail = #{userEmail}, userGender = #{userGender}, userBirth = #{userBirth}
+		WHERE userId = #{userId};
+	</update>
+	
+	<delete id="userDelete" parameterType="com.example.demo.dto.UserDTO" >
+		DELETE FROM users WHERE userId = #{userId};
+	</delete>
+	
+	<select id="getUserFileName" parameterType="String" resultType="String">
+		SELECT userFileName FROM users WHERE userId = #{userId};
+	</select>
+	
+</mapper>

@@ -36,6 +36,7 @@ public class UserService {
 			String fileName = null;
 			// 파일 저장 경로
 			String defaultFilePath = "C:\\2023\\SWproject\\SWproject\\src\\main\\resources\\static\\image\\profileImage\\";
+//			String defaultFilePath =  "src/main/resources/static/image/profileImage/" ;
 			String filePath = null;
 			if (!uploadFile.isEmpty()) {
 				String originFileName = uploadFile.getOriginalFilename(); // 원본 파일 이름 가져오기

@@ -9,6 +9,8 @@ public class BbsDTO {
 	private String bbsContent;
 	private Timestamp bbsDate;
 	private int bbsAvailable;
+	private int follower;
+	private int following;
 
 	private String profileImage;
 	private ArrayList<String> bbsFiles;
@@ -68,4 +70,22 @@ public class BbsDTO {
 	public void setBbsFiles(ArrayList<String> bbsFiles) {
 		this.bbsFiles = bbsFiles;
 	}
+
+	public int getFollower() {
+		return follower;
+	}
+
+	public void setFollower(int follower) {
+		this.follower = follower;
+	}
+
+	public int getFollowing() {
+		return following;
+	}
+
+	public void setFollowing(int following) {
+		this.following = following;
+	}
+
+
 }

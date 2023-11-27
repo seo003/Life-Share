@@ -1,5 +1,6 @@
 <%@page import="com.example.demo.dto.BbsDTO"%>
 <%@page import="java.util.ArrayList"%>
+<%@ page import="com.example.demo.dto.UserDTO" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="header.jsp"%>
@@ -10,36 +11,26 @@
 <title>Insert title here</title>
 <link href="css/boardStyles.css" rel="stylesheet" />
 <link href="css/modal.css" rel="stylesheet" />
+<script src="js/modal.js"></script>
 <script>
-	function openModal(userId) {
-		var modalId = "modal_" + userId;
-		var modal = document.getElementById(modalId);
-		modal.style.display = "flex";
-
-	}
-
-	function closeModal(userId) {
-		var modalId = "modal_" + userId;
-		var modal = document.getElementById(modalId);
-		modal.style.display = "none";
-	}
-	function followUser(toUserId) {
-		$.ajax({
-			type : "POST",
-			url : "/follow",
-			data : {
-				toUserId : toUserId
-			},
-			success : function(response) {
-				// 팔로우가 성공적으로 처리되었을 때 실행할 코드
-				console.log("팔로우가 성공적으로 처리되었습니다.");
-			},
-			error : function(xhr, status, error) {
-				// 팔로우 처리 중에 에러가 발생했을 때 실행할 코드
-				console.error("에러가 발생했습니다:", error);
-			}
-		});
-	}
+	// function followUser(toUserId) {
+	// 	$.ajax({
+	// 		type : "POST",
+	// 		url : "/follow",
+	// 		data : {
+	// 			toUserId : toUserId
+	// 		},
+	// 		success : function(response) {
+	// 			$('#follower').text("팔로워 : " + response.follower);
+	// 			$('#following').text("팔로잉 : " + response.following);
+	// 			alert("팔로우가 성공적으로 처리되었습니다.");
+	// 		},
+	// 		error : function(error) {
+	// 			// 팔로우 처리 중에 에러가 발생했을 때 실행할 코드
+	// 			console.error("에러가 발생했습니다:", error);
+	// 		}
+	// 	});
+	// }
 </script>
 </head>
 <div id="layoutSidenav">
@@ -73,9 +64,12 @@
 											<h2>
 												<%=bbsInfo.getUserId()%>
 											</h2>
-											<br>
-											<button type="button" class="button"
-												onclick="followUser('<%=bbsInfo.getUserId()%>')">팔로우</button>
+											<p id="follower" style="display: inline">팔로워 : <%=bbsInfo.getFollower()%></p>
+											<p id="following">팔로잉 : <%=bbsInfo.getFollowing()%></p>
+											<!--<button type="button" class="button"
+												onclick="followUser('<%=bbsInfo.getUserId()%>')">팔로우</button>-->
+											<a href="follow?followId=<%=bbsInfo.getUserId()%>"><button type="button" class="button" >팔로우</button></a>
+											<p></p>
 
 											<!-- <button type="button" class="button">팔로잉</button> -->
 

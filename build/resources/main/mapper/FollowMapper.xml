@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace에 dao(mapper.java) -->
 <mapper namespace="com.example.demo.mapper.FollowMapper">
 
-	<insert id="follow" parameterType="String">
-		INSERT INTO follow (fromUserId, toUserId) values (#{fromUserId}, #{toUserId});
-	</insert>
-	<select id="getFollowerCount" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM follow WHERE toUserId=#{userId};
-	</select>
-	<select id="getFollowingCount" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM follow WHERE fromUserId=#{userId};
-	</select>
+    <insert id="follow" parameterType="String">
+        INSERT INTO follow (fromUserId, toUserId)
+        values (#{fromUserId}, #{toUserId});
+    </insert>
+    <select id="getFollowerCount" parameterType="String" resultType="int">
+        SELECT COUNT(*)
+        FROM follow
+        WHERE toUserId = #{userId};
+    </select>
+    <select id="getFollowingCount" parameterType="String" resultType="int">
+        SELECT COUNT(*)
+        FROM follow
+        WHERE fromUserId = #{userId};
+    </select>
 </mapper>

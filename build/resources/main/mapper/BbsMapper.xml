@@ -77,11 +77,10 @@
         FROM bbs
         WHERE bbsId = #{bbsId};
     </delete>
-    <!--
+
     <select id="getBbsFromUserId" parameterType="com.example.demo.dto.BbsDTO" resultType="com.example.demo.dto.BbsDTO">
         SELECT *
         FROM bbs
         WHERE userId = #{userId};
     </select>
-    -->
 </mapper>

@@ -15,6 +15,8 @@ import com.example.demo.service.FollowService;
 import jakarta.servlet.http.HttpSession;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class FollowController {
@@ -28,45 +30,31 @@ public class FollowController {
 		this.bbsService = bbsService;
 	}
 
-//	@PostMapping("/follow")
-//	@ResponseBody
-//	public ResponseEntity<?> follow(HttpSession session, String toUserId) {
-//		String loginId = (String) session.getAttribute("loginId");
-//		if (loginId == null) {
-//			return new ResponseEntity<>("로그인이 필요합니다", HttpStatus.UNAUTHORIZED);
-//		}
-//		System.out.println("fromUserId: " + loginId);
-//		System.out.println("toUserId: " + toUserId);
-//
-//		int result = followService.follow(loginId, toUserId); //성공 1, 실패 0
-//
-//		if(result == 1) {
-//			ArrayList<BbsDTO> bbsList = new ArrayList<>();
-//			bbsList = bbsService.getBbsFromUserId(loginId);
-//			for (BbsDTO bbsDTO : bbsList) {
-//				bbsDTO = followService.followCount(bbsDTO);
-//			}
-//			return new ResponseEntity<>(bbsList.get(0), HttpStatus.OK);
-//		} else {
-//			return new ResponseEntity<>("팔로우 처리에 실패하였습니다", HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//	}
-	@GetMapping("/follow")
-	public String  follow(HttpSession session, Model model, String followId) {
+	@PostMapping("/follow")
+	@ResponseBody
+	public int follow(HttpSession session, String toUserId) {
+//		System.out.println("toUserID; " + toUserId);
 		String loginId = (String) session.getAttribute("loginId");
-		if (loginId == null) {
-			model.addAttribute("msg", "needLogin");
-			return "alert";
-		}
-		System.out.println("followId: " +followId);
-		System.out.println("logniId: " + loginId);
+		int result = followService.follow(loginId, toUserId);
+		return result;
+	}
 
-		int result = followService.follow(loginId, followId); //성공 1, 실패 0
-		if (result == 1) {
-			model.addAttribute("msg", "followY");
-		} else {
-			model.addAttribute("msg", "followN");
-		}
-		return "alert";
+	@PostMapping("/followCount")
+	@ResponseBody
+	public Map<String, String> followCount(HttpSession session) {
+		String loginId = (String) session.getAttribute("loginId");
+
+		int follower = followService.getFollowerCount(loginId);
+		int following = followService.getFollowingCount(loginId);
+//		System.out.println("followerC: " + follower);
+//		System.out.println("followingC: " + following);
+
+		Map<String, String> followCount = new HashMap<>();
+		followCount.put("follower",  String.valueOf(follower));
+		followCount.put("following", String.valueOf(following));
+		followCount.put("toUserId", loginId);
+//		System.out.println("followCount: " + followCount);
+
+		return followCount;
 	}
 }

@@ -33,5 +33,5 @@ public interface BbsMapper {
 
 	public int bbsCompletedDelete(int bbsId);
 
-    //ArrayList<BbsDTO> getBbsFromUserId(String );
+    ArrayList<BbsDTO> getBbsFromUserId(String loginId);
 }

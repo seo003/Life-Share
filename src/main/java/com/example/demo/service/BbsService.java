@@ -97,9 +97,8 @@ public class BbsService {
 
 	public int bbsCompletedDelete(int bbsId) {
 		return bbsMapper.bbsCompletedDelete(bbsId);
-
 	}
-	//public ArrayList<BbsDTO> getBbsFromUserId(String loginId) {
-	//	return bbsMapper.getBbsFromUserId(loginId);
-	//}
+	public ArrayList<BbsDTO> getBbsFromUserId(String loginId) {
+		return bbsMapper.getBbsFromUserId(loginId);
+	}
 }

@@ -30,7 +30,7 @@ public class FollowService {
         System.out.println("fromUserId: " + fromUserID);
         System.out.println("toUserId: " + toUserId);
         int followResult = followMapper.follow(fromUserID, toUserId);
-        
+
         if (followResult == 1) {
             ArrayList<BbsDTO> bbsList = bbsMapper.getBbsFromUserId(fromUserID);
             for (BbsDTO bbsDTO : bbsList) {

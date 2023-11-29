@@ -14,7 +14,6 @@
     <script src="js/modal.js"></script>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script>
-        var followData={}
         function followUser(followId) {
             var toUserId = followId;
             console.log("followId " + toUserId);
@@ -34,10 +33,7 @@
                         alert("로그인이 필요합니다.");
                         location.href = "login";
                     } else if (data == 1) {
-                        followCount();
-                        var modalId = "modal_" + followData.toUserId;
-                        $('#' + modalId + ' #follower').text("팔로워 : " + followData.follower);
-                        $('#' + modalId + ' #following').text("팔로잉 : " + followData.following);
+                        followCount(followId);
                     } else if (data == 2) {
                         alert("팔로우 불가능");
                     }
@@ -49,18 +45,23 @@
             });
         }
 
-        function followCount() {
+        function followCount(followId) {
             console.log("followCount 함수");
             $.ajax({
                 type: "post",
                 url: "/followCount",
+                data: {
+                    "followId": followId
+                },
                 success: function (data) {
                     console.log("follower : " + data.follower);
                     console.log("following : " + data.following);
-                    followData = data;
-                    console.log("followData: ", followData);
-                    // $('#follower').text("팔로워 : " + data.follower);
-                    // $('#following').text("팔로잉 : " + data.following);
+
+                    var modalId = "modal_" + followId;
+                    console.log("modalId: "+ modalId);
+
+                    $('#' + modalId + '#follower').text("팔로워 : " + data.follower);
+                    $('#' + modalId + ' #following').text("팔로잉 : " + data.following);
                     // 팔로우 상태를 저장하고 버튼의 텍스트와 href 값을 변경
                     // $('#followButton').attr('href', 'unFollow?toUserId=' + toUserId);
                     // $('#followButton .button').text('언팔로우');

@@ -41,18 +41,16 @@ public class FollowController {
 
 	@PostMapping("/followCount")
 	@ResponseBody
-	public Map<String, String> followCount(HttpSession session) {
-		String loginId = (String) session.getAttribute("loginId");
-
-		int follower = followService.getFollowerCount(loginId);
-		int following = followService.getFollowingCount(loginId);
+	public Map<String, String> followCount(String followId) {
+		int follower = followService.getFollowerCount(followId);
+		int following = followService.getFollowingCount(followId);
 //		System.out.println("followerC: " + follower);
 //		System.out.println("followingC: " + following);
 
 		Map<String, String> followCount = new HashMap<>();
 		followCount.put("follower",  String.valueOf(follower));
 		followCount.put("following", String.valueOf(following));
-		followCount.put("toUserId", loginId);
+		followCount.put("toUserId", followId);
 //		System.out.println("followCount: " + followCount);
 
 		return followCount;
